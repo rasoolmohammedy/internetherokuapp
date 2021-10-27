@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
-    public class ExtentReportsHelper
+    public static class ExtentReportsHelper
     {
-        public ExtentReports extent { get; set; }
-        public ExtentV3HtmlReporter reporter { get; set; }
-        public ExtentTest test { get; set; }
-        public ExtentReportsHelper(string reportPath, string docTitle, string reportName, string appUnderTest, string environment)
+        public static ExtentReports extent { get; set; }
+        public static ExtentV3HtmlReporter reporter { get; set; }
+        public static ExtentTest test { get; set; }
+
+        public static string currentReportPath;
+        public static void InitializeExtentReport(string reportPath, string docTitle, string reportName, string appUnderTest, string environment)
         {
+            currentReportPath = reportPath;
             extent = new ExtentReports();
             reporter = new ExtentV3HtmlReporter(reportPath);
             reporter.Config.DocumentTitle = docTitle;
@@ -26,23 +29,27 @@ namespace Utilities
             extent.AddSystemInfo("Machine", Environment.MachineName);
             extent.AddSystemInfo("OS", Environment.OSVersion.VersionString);
         }
-        public void CreateTest(string testName)
+        public static void CreateTest(string testName)
         {
             test = extent.CreateTest(testName);
         }
-        public void SetStepStatusPass(string stepDescription)
+        public static void SetStepStatusPass(string stepDescription)
         {
             test.Log(Status.Pass, stepDescription);
         }
-        public void SetStepStatusWarning(string stepDescription)
+        public static void SetStepStatusWarning(string stepDescription)
         {
             test.Log(Status.Warning, stepDescription);
         }
-        public void SetTestStatusPass()
+        public static void SetStepStatusInfo(string stepDescription)
+        {
+            test.Log(Status.Info, stepDescription);
+        }
+        public static void SetTestStatusPass()
         {
             test.Pass("Test Executed Sucessfully!");
         }
-        public void SetTestStatusFail(string message = null)
+        public static void SetTestStatusFail(string message = null)
         {
             var printMessage = "<p><b>Test FAILED!</b></p>";
             if (!string.IsNullOrEmpty(message))
@@ -51,15 +58,15 @@ namespace Utilities
             }
             test.Fail(printMessage);
         }
-        public void AddTestFailureScreenshot(string base64ScreenCapture)
+        public static void AddTestFailureScreenshot(string base64ScreenCapture)
         {
             test.AddScreenCaptureFromBase64String(base64ScreenCapture, "Screenshot on Error:");
         }
-        public void SetTestStatusSkipped()
+        public static void SetTestStatusSkipped()
         {
             test.Skip("Test skipped!");
         }
-        public void Close()
+        public static void Close()
         {
             extent.Flush();
         }

@@ -10,10 +10,31 @@ namespace Utilities
 {
     public static class Constants
     {
+        public const string CHROMEDRIVERRELATIVEPATH = @"Resources";
+        public const string TESTDATAFILEPATH = @"Data\TestData.xlsx";
+
         public enum BrowserTypes
         {
             chrome
         }
+
+        public enum SuiteType
+        {
+            UI,
+            API
+        }
+
+        public static class TestDataConsts
+        {
+            public const string HEADER_TESTCASENAME = "Test Case Name";
+            public const string HEADER_PROPERTYNAME = "Property Name";
+            public const string HEADER_PROPERTYVALUE = "Property Value";
+            public const string WORKSHEET_UI_SUITE = "UISuite";
+            public const string WORKSHEET_API_SUITE = "APISuite";
+            public const int UI_TABLE_INDEX = 0;
+            public const int API_TABLE_INDEX = 1;
+        }
+
         public static class PropFileConsts
         {
             public const string CONFIG = "Config";
@@ -39,7 +60,7 @@ namespace Utilities
 
                 static UI()
                 {
-                    var propFilePath = Path.Combine(Environment.CurrentDirectory, PropFileConsts.CONFIG, PropFileConsts.UIGLOBALPROPERTIESFILENAME);
+                    var propFilePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, PropFileConsts.CONFIG, PropFileConsts.UIGLOBALPROPERTIESFILENAME);
                     var inidata = Utilities.PropertiesReader.ReadPropertiesFile(propFilePath);
                     #region Loading Endpoint Section
                     if (inidata.Sections.ContainsSection(PropFileConsts.ENDPOINT))
@@ -63,7 +84,7 @@ namespace Utilities
                     {
                         try
                         {
-                            BASEPATH = inidata.Sections.GetSectionData(PropFileConsts.ENDPOINT).Keys.GetKeyData(PropFileConsts.BASEPATH).Value;
+                            BASEPATH = inidata.Sections.GetSectionData(PropFileConsts.REPORTSETTINGS).Keys.GetKeyData(PropFileConsts.BASEPATH).Value;
                         }
                         catch (Exception ex)
                         {
@@ -104,7 +125,7 @@ namespace Utilities
                 public static readonly ILog logger = LogManager.GetLogger(typeof(API));
                 static API()
                 {
-                    var propFilePath = Path.Combine(Environment.CurrentDirectory, PropFileConsts.CONFIG, PropFileConsts.APIGLOBALPROPERTIESFILENAME);
+                    var propFilePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, PropFileConsts.CONFIG, PropFileConsts.APIGLOBALPROPERTIESFILENAME);
                     var inidata = Utilities.PropertiesReader.ReadPropertiesFile(propFilePath);
                     #region Loading Endpoint Section
                     if (inidata.Sections.ContainsSection(PropFileConsts.ENDPOINT))
