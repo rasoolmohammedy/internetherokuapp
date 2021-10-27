@@ -20,27 +20,24 @@ namespace UI.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC1_FormAuthentication")]
-    public partial class TC1_FormAuthenticationFeature
+    [NUnit.Framework.DescriptionAttribute("TC3_MultipleWindows")]
+    public partial class TC3_MultipleWindowsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "TC1_FormAuthentication.feature"
+#line 1 "TC3_MultipleWindows.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TC1_FormAuthentication", @"TestCase-1
-Step 1 - Launch the site then click on Form Authentication
-Step 2 - Get the username and password from the given text and store them in an external file.
-Step 3 - Read that username and password from the external file and log in with those credentials
-Step 4 - Validate the login success.
-Step 5 - Enter any invalid credentials and validate the failure scenario as well.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TC3_MultipleWindows", "TestCase-3\r\nStep 1 - Select Multiple Windows\r\nStep 2 - Click on \"Click Here\"\r\nSte" +
+                    "p 3 - Log the URL of the newly opened tab\r\nStep 4 - Close the newly opened tab\r\n" +
+                    "Step 5 - Log the title of the current page", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -79,15 +76,15 @@ Step 5 - Enter any invalid credentials and validate the failure scenario as well
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test Case 1 - Form Authentication Demonstration")]
+        [NUnit.Framework.DescriptionAttribute("Test Case 3 - Multiple Windows Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
-        public virtual void TestCase1_FormAuthenticationDemonstration()
+        public virtual void TestCase3_MultipleWindowsDemonstration()
         {
             string[] tagsOfScenario = new string[] {
                     "UI"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 1 - Form Authentication Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 3 - Multiple Windows Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -107,22 +104,23 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 11
+ testRunner.Given("the user landed into Homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 12
- testRunner.When("I launch the website and click on Form Authentication", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user clicks on Multiple Windows Link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.Then("Get the username and password displayed on screen and store them in test data fil" +
-                        "e", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the user clicks on Click Here Link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.When("I read those stored username and password file from test data file and try to log" +
-                        "in with those credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("log the URL of the newly opened tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 15
- testRunner.Then("User must be logged in successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("close the newly opened tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 16
- testRunner.When("I enter any invalid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("log the title of the current page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

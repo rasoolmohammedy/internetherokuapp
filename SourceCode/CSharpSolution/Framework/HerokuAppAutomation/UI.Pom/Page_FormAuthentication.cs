@@ -14,7 +14,7 @@ namespace UI.Pom
 {
     public class Page_FormAuthentication : BaseClass
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(BaseClass));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(Page_FormAuthentication));
         public Page_FormAuthentication(IWebDriver driver) 
             : base(driver)
         {
@@ -42,8 +42,6 @@ namespace UI.Pom
 
         [FindsBy(How = How.XPath, Using = "//a[contains(@class, 'radius')]")]
         private IWebElement logout_button;
-        
-
         #endregion
 
         #region Action Methods

@@ -416,6 +416,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Page_MultipleWindows.cs" />
+    <Compile Include="Page_DynamicLoading.cs" />
     <Compile Include="Page_FormAuthentication.cs" />
     <Compile Include="Page_Home.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

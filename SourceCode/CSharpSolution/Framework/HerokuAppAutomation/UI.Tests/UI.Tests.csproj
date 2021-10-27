@@ -439,6 +439,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\TC1_FormAuthenticationSteps.cs" />
+    <Compile Include="StepDefinitions\TC2_DynamicLoadingSteps.cs" />
+    <Compile Include="StepDefinitions\TC3_MultipleWindowsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
@@ -448,6 +450,8 @@
     <None Include="Data\TestData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Features\TC2_DynamicLoading.feature" />
+    <None Include="Features\TC3_MultipleWindows.feature" />
     <None Include="packages.config" />
     <None Include="Features\TC1_FormAuthentication.feature" />
   </ItemGroup>

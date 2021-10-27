@@ -35,8 +35,6 @@ namespace UI.Tests.StepDefinitions
             Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title);
             p_formAuthentication = new Page_FormAuthentication(driver);
             p_home = new Page_Home(driver);
-            //PageFactory.InitElements(driver, p_home);
-            //PageFactory.InitElements(driver, p_formAuthentication);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.UI, scenarioContext.ScenarioInfo.Title);
         }
 
