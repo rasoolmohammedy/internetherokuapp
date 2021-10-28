@@ -442,9 +442,7 @@
     <Compile Include="StepDefinitions\TC2_DynamicLoadingSteps.cs" />
     <Compile Include="StepDefinitions\TC3_MultipleWindowsSteps.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Data\TestData.xlsx">

@@ -32,7 +32,7 @@ namespace UI.Tests.StepDefinitions
         [BeforeScenario]
         public void Initialize()
         {
-            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title);
+            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
             p_formAuthentication = new Page_FormAuthentication(driver);
             p_home = new Page_Home(driver);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.UI, scenarioContext.ScenarioInfo.Title);

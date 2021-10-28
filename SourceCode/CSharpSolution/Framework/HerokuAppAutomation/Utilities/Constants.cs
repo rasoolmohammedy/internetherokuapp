@@ -12,6 +12,7 @@ namespace Utilities
     {
         public const string CHROMEDRIVERRELATIVEPATH = @"Resources";
         public const string TESTDATAFILEPATH = @"Data\TestData.xlsx";
+        public const string REPORTFILENAME = "ExtentReport.html";
 
         public enum BrowserTypes
         {
@@ -48,6 +49,18 @@ namespace Utilities
             public const string USERNAME = "username";
             public const string PASSWORD = "password";
             public const string BROSWERTYPE= "browsertype";
+        }
+
+        public static class API
+        {
+            public static class HeaderConstants
+            {
+                public const string CONTENT_TYPE = "Content-Type";
+                public const string ACCEPT = "Accept";
+                public const string APPLICATION_JSON = "application/json";
+                public const string COOKIE = "Cookie";
+                public const string COOKIEVALUE= "token={0}";
+            }
         }
         public static class GlobalProperties
         {
@@ -123,6 +136,7 @@ namespace Utilities
                 public static readonly string USERNAME = null;
                 public static readonly string PASSWORD = null;
                 public static readonly ILog logger = LogManager.GetLogger(typeof(API));
+
                 static API()
                 {
                     var propFilePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, PropFileConsts.CONFIG, PropFileConsts.APIGLOBALPROPERTIESFILENAME);

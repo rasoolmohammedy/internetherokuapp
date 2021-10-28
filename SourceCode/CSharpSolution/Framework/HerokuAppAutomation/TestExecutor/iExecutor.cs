@@ -12,6 +12,7 @@ namespace TestExecutor
     public interface iExecutor
     {
         ILog logger { get; set; }
+        string currentReportPath { get; set; }
         void Initializer();
     }
 }

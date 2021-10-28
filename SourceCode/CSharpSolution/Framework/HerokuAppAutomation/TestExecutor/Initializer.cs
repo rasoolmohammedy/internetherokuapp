@@ -1,8 +1,8 @@
 ﻿using BoDi;
 using log4net;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,25 +11,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
-using UI.Base;
 using Utilities;
 
 namespace TestExecutor
 {
     [Binding]
-    public sealed class UIExecutor : iExecutor
+    public sealed class Initializer
     {
         public ILog logger { get; set; }
+        public IWebDriver driver { get; set; }
+        public RestClient restClient { get; set; }
+        public string currentReportPath { get; set; }
         private readonly ScenarioContext scenarioContext;
         private readonly FeatureContext featureContext;
         private readonly IObjectContainer objectcontainer;
-        public IWebDriver driver { get; set; }
-        public string currentReportPath { get ; set ; }
 
-        public UIExecutor(ScenarioContext scenarioContext, FeatureContext featureContext, IObjectContainer objectcontainer)
+        public Initializer(ScenarioContext scenarioContext, FeatureContext featureContext, IObjectContainer objectcontainer)
         {
             #region Initializing Logger
-            logger = LogManager.GetLogger(typeof(UIExecutor));
+            logger = LogManager.GetLogger(typeof(Initializer));
             logger.Info($"Logger initialized. UI Automatioin Suite Execution Begins");
             #endregion
 
@@ -38,6 +38,7 @@ namespace TestExecutor
             currentReportPath = Path.Combine(reportPath, Constants.REPORTFILENAME);
             Utilities.ExtentReportsHelper.InitializeExtentReport(currentReportPath, "Automation Testing Report", "Regression Testing", "the-internet.herokuapp.com", "QA");
             #endregion
+
             if (scenarioContext == null) throw new ArgumentNullException("scenarioContext");
             this.scenarioContext = scenarioContext;
             if (featureContext == null) throw new ArgumentNullException("featureContext");
@@ -45,47 +46,43 @@ namespace TestExecutor
             this.objectcontainer = objectcontainer;
         }
 
-        [BeforeTestRun]
-        public static void BeforeTestRun()
-        {
-            KillChromeAndChromeDriverProcesses();
-        }
-
-        [AfterTestRun]
-        public static void AfterTestRun()
-        {
-            Utilities.ExtentReportsHelper.Close();
-            KillChromeAndChromeDriverProcesses();
-        }
-
         [BeforeScenario(Order = 1000)]
         public void BeforeScenario()
         {
+            if (scenarioContext.ScenarioInfo.Tags.Contains(Constants.SuiteType.UI.ToString()))
+            {
+                Constants.BrowserTypes currentBroswerType = (Constants.BrowserTypes)Enum.Parse(typeof(Constants.BrowserTypes), Constants.GlobalProperties.UI.BROSWERTYPE.ToLower());
+                switch (currentBroswerType)
+                {
+                    case Constants.BrowserTypes.chrome:
+                        instantiateChrome();
+                        break;
+                    default:
+                        throw new Exception($"Unexpected browser type supplied in properties file. Kindly check the browser type specified in {Constants.PropFileConsts.UIGLOBALPROPERTIESFILENAME} is valid.");
+                }
+                objectcontainer.RegisterInstanceAs<IWebDriver>(driver);
+                KillChromeAndChromeDriverProcesses();
+            }
+            else
+            {
+                #region Initializing Rest Client
+                restClient = new RestClient(Constants.GlobalProperties.API.BASEURL);
+                #endregion
+                objectcontainer.RegisterInstanceAs<RestClient>(restClient);
+            }
             logger.Info(string.Format("Entering Before scenario: {0}, Feature: {1}", scenarioContext.ScenarioInfo.Title, featureContext.FeatureInfo.Title));
-            Initializer();
         }
 
         [AfterScenario(Order = 1000)]
         public void AfterScenario()
         {
             Utilities.ExtentReportsHelper.Close();
+            if (scenarioContext.ScenarioInfo.Tags.Contains(Constants.SuiteType.UI.ToString()))
+            {
+                KillChromeAndChromeDriverProcesses();
+            }
         }
 
-        public void Initializer()
-        {
-            #region Initializing web driver
-            Constants.BrowserTypes currentBroswerType = (Constants.BrowserTypes)Enum.Parse(typeof(Constants.BrowserTypes), Constants.GlobalProperties.UI.BROSWERTYPE.ToLower());
-            switch (currentBroswerType)
-            {
-                case Constants.BrowserTypes.chrome:
-                    instantiateChrome();
-                    break;
-                default:
-                    throw new Exception($"Unexpected browser type supplied in properties file. Kindly check the browser type specified in {Constants.PropFileConsts.UIGLOBALPROPERTIESFILENAME} is valid.");
-            }
-            objectcontainer.RegisterInstanceAs<IWebDriver>(driver);
-            #endregion
-        }
 
         private void instantiateChrome()
         {

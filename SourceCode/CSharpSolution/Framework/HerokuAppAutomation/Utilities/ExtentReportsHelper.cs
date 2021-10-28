@@ -29,9 +29,10 @@ namespace Utilities
             extent.AddSystemInfo("Machine", Environment.MachineName);
             extent.AddSystemInfo("OS", Environment.OSVersion.VersionString);
         }
-        public static void CreateTest(string testName)
+        public static void CreateTest(string testName,Constants.SuiteType category)
         {
             test = extent.CreateTest(testName);
+            test.AssignCategory(category.ToString());
         }
         public static void SetStepStatusPass(string stepDescription)
         {
