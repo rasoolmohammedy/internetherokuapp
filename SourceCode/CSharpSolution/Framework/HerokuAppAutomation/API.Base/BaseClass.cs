@@ -2,10 +2,14 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities;
+using RestSharp.Serialization.Json;
+using RestSharp.Serializers.NewtonsoftJson;
+
 
 namespace API.Base
 {
@@ -26,16 +30,23 @@ namespace API.Base
             RestRequest request = new RestRequest(uri, Method.POST);
             IRestResponse response = null;
             request.RequestFormat = DataFormat.Json;
+            JsonSerializer serializer = new JsonSerializer();
+            request.JsonSerializer = serializer;
+            request.AddJsonBody(serializer.Serialize(body));
             foreach (var header in requestHeaders)
                 request.AddHeader(header.Key, header.Value);
-            request.AddBody(body);
             try
             {
                 response = client.Execute(request);
+                logger.Debug($"API with POST method has been executed successfully.");
+                logger.Debug($"Status Code of the POST Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Unexpected exception occurred while trying to perform post call on the URI {uri}", ex);
+                var msg = $"Unexpected exception occurred while trying to perform post call on the URI {uri}" +
+                          ex.Message;
+                logger.Debug(msg);
+                throw new Exception(msg,ex);
             }
             return response;
         }
@@ -48,10 +59,15 @@ namespace API.Base
             try
             {
                 response = client.Execute(request);
+                logger.Debug($"API with GET method has been executed successfully.");
+                logger.Debug($"Status Code of the GET Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Unexpected exception occurred while trying to perform get call on the URI {uri}", ex);
+                var msg = $"Unexpected exception occurred while trying to perform get call on the URI {uri}" +
+                          ex.Message;
+                logger.Debug(msg);
+                throw new Exception(msg, ex);
             }
             return response;
         }
@@ -68,10 +84,15 @@ namespace API.Base
             try
             {
                 response = client.Execute(request);
+                logger.Debug($"API with PUT method has been executed successfully.");
+                logger.Debug($"Status Code of the GET Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Unexpected exception occurred while trying to perform put call on the URI {uri}", ex);
+                var msg = $"Unexpected exception occurred while trying to perform put call on the URI {uri}" +
+                          ex.Message;
+                logger.Debug(msg);
+                throw new Exception(msg, ex);
             }
             return response;
         }
@@ -86,10 +107,15 @@ namespace API.Base
             try
             {
                 response = client.Execute(request);
+                logger.Debug($"API with PUT method has been executed successfully.");
+                logger.Debug($"Status Code of the GET Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Unexpected exception occurred while trying to perform Delete call on the URI {uri}", ex);
+                var msg = $"Unexpected exception occurred while trying to perform Delete call on the URI {uri}" +
+                          ex.Message;
+                logger.Debug(msg);
+                throw new Exception(msg, ex);
             }
             return response;
         }

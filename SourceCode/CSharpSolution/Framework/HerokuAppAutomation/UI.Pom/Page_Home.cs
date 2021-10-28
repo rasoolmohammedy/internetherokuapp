@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SeleniumExtras.PageObjects;
 using UI.Base;
 using Utilities;
 using log4net;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace UI.Pom
 {

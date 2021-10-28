@@ -1,13 +1,16 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using API.Base;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 using Utilities;
 
 namespace API.Tests.StepDefinitions
 {
     [Binding]
-    public class TC1_CreateBooking_PositiveCaseSteps
+    public class TC1_CreateBooking_PositiveCaseSteps:BaseClass
     {
         private readonly ScenarioContext scenarioContext;
         private readonly FeatureContext featureContext;
@@ -15,7 +18,7 @@ namespace API.Tests.StepDefinitions
         private Dictionary<string, string> testData = null;
         private IRestResponse response = null;
 
-        public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient)
+        public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient):base(restClient)
         {
             if (scenarioContext == null) throw new ArgumentNullException("scenarioContext");
             this.scenarioContext = scenarioContext;
@@ -49,8 +52,8 @@ namespace API.Tests.StepDefinitions
             requestHeaders.Add(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
             try
             {
-                //response = base.PostCall(uri, requestBody, requestHeaders);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri}\nReqestBody= {requestBody}");
+                response = base.PostCall(uri, requestBody, requestHeaders);
+                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri+ Environment.NewLine}ReqestBody= {requestBody}");
             }
             catch (Exception ex)
             {
@@ -66,11 +69,16 @@ namespace API.Tests.StepDefinitions
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking created successfully.");
-                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body=\n{response.Content}");
+                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body={Environment.NewLine + response.Content}");
                 }
+                else
+                {
+                    Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected Status code received. Obtained status code is {response.StatusCode}");
+                }
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, $"Unexpected Status code received from API.");
             }
             else
-                Utilities.ExtentReportsHelper.SetStepStatusWarning("Test case execution failed!.");
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
         }
     }
 }
