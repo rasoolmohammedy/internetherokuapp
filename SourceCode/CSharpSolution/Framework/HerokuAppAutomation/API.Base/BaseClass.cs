@@ -30,9 +30,7 @@ namespace API.Base
             RestRequest request = new RestRequest(uri, Method.POST);
             IRestResponse response = null;
             request.RequestFormat = DataFormat.Json;
-            JsonSerializer serializer = new JsonSerializer();
-            request.JsonSerializer = serializer;
-            request.AddJsonBody(serializer.Serialize(body));
+            request.AddJsonBody(body);
             foreach (var header in requestHeaders)
                 request.AddHeader(header.Key, header.Value);
             try

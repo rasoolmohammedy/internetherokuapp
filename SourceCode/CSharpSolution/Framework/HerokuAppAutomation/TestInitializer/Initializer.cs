@@ -8,9 +8,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using UI.Pom;
 using Utilities;
 
 namespace TestExecutor
@@ -18,32 +20,51 @@ namespace TestExecutor
     [Binding]
     public sealed class Initializer
     {
-        public ILog logger { get; set; }
+        private static ILog logger { get; set; }
         public IWebDriver driver { get; set; }
         public RestClient restClient { get; set; }
-        public string currentReportPath { get; set; }
+        public static string currentReportPath { get; set; }
         private readonly ScenarioContext scenarioContext;
         private readonly FeatureContext featureContext;
         private readonly IObjectContainer objectcontainer;
 
         public Initializer(ScenarioContext scenarioContext, FeatureContext featureContext, IObjectContainer objectcontainer)
         {
-            #region Initializing Logger
-            logger = LogManager.GetLogger(typeof(Initializer));
-            logger.Info($"Logger initialized. Automation Suite Execution Begins");
-            #endregion
-
-            #region Initializing Extent Report
-            string reportPath = Utilities.Helpers.CreateReportPath();
-            currentReportPath = Path.Combine(reportPath, Constants.REPORTFILENAME);
-            Utilities.ExtentReportsHelper.InitializeExtentReport(currentReportPath, "Automation Testing Report", "Regression Testing", "the-internet.herokuapp.com", "QA");
-            #endregion
-
             if (scenarioContext == null) throw new ArgumentNullException("scenarioContext");
             this.scenarioContext = scenarioContext;
             if (featureContext == null) throw new ArgumentNullException("featureContext");
             this.featureContext = featureContext;
             this.objectcontainer = objectcontainer;
+        }
+
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        {
+            #region Initializing Logger
+            if (logger == null)
+            {
+                logger = LogManager.GetLogger(typeof(Initializer));
+                logger.Info($"Logger initialized. Automation Suite Execution Begins");
+            }
+
+            #endregion
+            #region Initializing Extent Report
+            if (currentReportPath == null)
+            {
+                string reportPath = Utilities.Helpers.CreateReportPath();
+                currentReportPath = Path.Combine(reportPath,  Constants.REPORTFILENAME);
+                Utilities.ExtentReportsHelper.InitializeExtentReport(currentReportPath, "Automation Testing Report",
+                    "Regression Testing", "the-internet.herokuapp.com", "QA");
+            }
+            #endregion
+            KillChromeAndChromeDriverProcesses();
+        }
+
+        [AfterTestRun]
+        public static void AfterTestRun()
+        {
+            Utilities.ExtentReportsHelper.Close();
+            KillChromeAndChromeDriverProcesses();
         }
 
         [BeforeScenario(Order = 1000)]
@@ -71,6 +92,9 @@ namespace TestExecutor
                 objectcontainer.RegisterInstanceAs<RestClient>(restClient);
             }
             logger.Info(string.Format("Entering Before scenario: {0}, Feature: {1}", scenarioContext.ScenarioInfo.Title, featureContext.FeatureInfo.Title));
+            #region Extent Report Create Test
+            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
+            #endregion
         }
 
         [AfterScenario(Order = 1000)]

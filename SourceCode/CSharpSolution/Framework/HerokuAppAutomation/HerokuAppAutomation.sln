@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Tests", "UI.Tests\UI.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Tests", "API.Tests\API.Tests.csproj", "{A3A6C054-AE24-409C-BA72-85A943B6140A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExecutor", "TestExecutor\TestExecutor.csproj", "{AEA2A220-E8FB-44D5-8E14-B744997C7408}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInitializer", "TestInitializer\TestInitializer.csproj", "{AEA2A220-E8FB-44D5-8E14-B744997C7408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

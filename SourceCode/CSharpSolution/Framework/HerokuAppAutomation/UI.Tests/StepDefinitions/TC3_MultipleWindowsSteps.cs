@@ -31,7 +31,6 @@ namespace UI.Tests.StepDefinitions
         [BeforeScenario]
         public void Initialize()
         {
-            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
             p_multiplewindows = new Page_MultipleWindows(driver);
             p_home = new Page_Home(driver);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.UI, scenarioContext.ScenarioInfo.Title);

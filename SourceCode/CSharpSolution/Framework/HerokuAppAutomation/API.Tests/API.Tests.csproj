@@ -53,6 +53,9 @@
       <HintPath>..\packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.13.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.13.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -106,17 +109,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\TC1_CreateBooking_PositiveCase.feature" />
+    <None Include="Features\TC1_CreateBooking.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\API.Base\API.Base.csproj">
       <Project>{6F72BC90-78C2-4FEA-BC89-13C7189E6F5D}</Project>
       <Name>API.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestExecutor\TestExecutor.csproj">
-      <Project>{aea2a220-e8fb-44d5-8e14-b744997c7408}</Project>
-      <Name>TestExecutor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{1150D16D-F076-4B68-A34F-43ECD262EF47}</Project>

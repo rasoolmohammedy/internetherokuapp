@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Utilities
@@ -40,6 +42,21 @@ namespace Utilities
             {
                 logger.Warn($"Unexpected exception occurred while trying to get the XPath from the web element.", ex);
                 return string.Empty;
+            }
+        }
+
+        public static HttpStatusCode GetHttpStatusCodeFromStr(string str)
+        {
+            HttpStatusCode status;
+            if (Enum.TryParse(str, false, out status))
+            {
+                logger.Debug($"Valid string is provided. Converted Status code is {status}");
+                return status;
+            }
+            else
+            {
+                logger.Debug($"inValid string is provided. Unable to convert to a valid HTTP Status Code. Provided string is {str}");
+                throw new Exception($"Unexpected string is provided for HTTP status code. {str}");
             }
         }
     }

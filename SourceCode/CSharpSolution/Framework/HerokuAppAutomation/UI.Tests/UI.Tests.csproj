@@ -97,10 +97,6 @@
     <None Include="Features\TC1_FormAuthentication.feature" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestExecutor\TestExecutor.csproj">
-      <Project>{aea2a220-e8fb-44d5-8e14-b744997c7408}</Project>
-      <Name>TestExecutor</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UI.Base\UI.Base.csproj">
       <Project>{62140BB7-72D3-4431-946E-A9A7E92AEBA2}</Project>
       <Name>UI.Base</Name>

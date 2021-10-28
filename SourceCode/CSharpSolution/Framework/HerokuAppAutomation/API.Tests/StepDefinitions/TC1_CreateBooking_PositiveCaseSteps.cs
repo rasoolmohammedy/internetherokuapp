@@ -6,11 +6,12 @@ using API.Base;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace API.Tests.StepDefinitions
 {
     [Binding]
-    public class TC1_CreateBooking_PositiveCaseSteps:BaseClass
+    public class TC1_CreateBooking_PositiveCaseSteps : BaseClass
     {
         private readonly ScenarioContext scenarioContext;
         private readonly FeatureContext featureContext;
@@ -18,7 +19,7 @@ namespace API.Tests.StepDefinitions
         private Dictionary<string, string> testData = null;
         private IRestResponse response = null;
 
-        public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient):base(restClient)
+        public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient) : base(restClient)
         {
             if (scenarioContext == null) throw new ArgumentNullException("scenarioContext");
             this.scenarioContext = scenarioContext;
@@ -47,13 +48,11 @@ namespace API.Tests.StepDefinitions
         {
             string uri = testData["uri"];
             string requestBody = testData["Request Body"];
-            Dictionary<string, string> requestHeaders = new Dictionary<string, string>();
-            requestHeaders.Add(Constants.API.HeaderConstants.ACCEPT, Constants.API.HeaderConstants.APPLICATION_JSON);
-            requestHeaders.Add(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
+            var requestHeaders = GetRequestHeaders();
             try
             {
                 response = base.PostCall(uri, requestBody, requestHeaders);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri+ Environment.NewLine}ReqestBody= {requestBody}");
+                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
             }
             catch (Exception ex)
             {
@@ -64,9 +63,11 @@ namespace API.Tests.StepDefinitions
         [Then]
         public void ThenBookingMustBeCreatedWithoutAnyError()
         {
+            string expectedResponse = testData["Expected Response Code"];
+            HttpStatusCode expectedHttpResponse = Utilities.Helpers.GetHttpStatusCodeFromStr(expectedResponse);
             if (response != null)
             {
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == expectedHttpResponse)
                 {
                     Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking created successfully.");
                     Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body={Environment.NewLine + response.Content}");
@@ -75,10 +76,119 @@ namespace API.Tests.StepDefinitions
                 {
                     Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected Status code received. Obtained status code is {response.StatusCode}");
                 }
-                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, $"Unexpected Status code received from API.");
+                Assert.AreEqual(expectedHttpResponse, response.StatusCode, $"Unexpected Status code received from API.");
             }
             else
                 Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
+        }
+
+        [Then]
+        public void ThenStoreTheCreatedBookingIDBackToTestData()
+        {
+            try
+            {
+                dynamic api = JObject.Parse(response.Content);
+                int bookingId = api.bookingid;
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API,5,4, bookingId.ToString()); ;
+                Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
+            }
+            catch (Exception e)
+            {
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Unexpected error occurred while trying to retrieve the booking Id from the API response and writing onto the test data excel");
+            }
+            
+        }
+
+
+        [When]
+        public void WhenTheUserTriesToCreateABookingWithInvalidInputWithNullValue()
+        {
+            string uri = testData["uri"];
+            string requestBody = testData["Request Body"];
+            var requestHeaders = GetRequestHeaders();
+            try
+            {
+                response = base.PostCall(uri, requestBody, requestHeaders);
+                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
+            }
+            catch (Exception ex)
+            {
+                Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected exception occurred while trying to create booking with invalid request body.\n{ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        [Then]
+        public void ThenBookingMustNotBeCreatedErrorMustBeThrown()
+        {
+            string expectedResponse = testData["Expected Response Code"];
+            HttpStatusCode expectedHttpResponse = Utilities.Helpers.GetHttpStatusCodeFromStr(expectedResponse);
+            if (response != null)
+            {
+                if (response.StatusCode == expectedHttpResponse)
+                {
+                    Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking was not created successfully, as we have provided incorrect request body.");
+                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body={Environment.NewLine + response.Content}");
+                }
+                else
+                {
+                    Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected Status code received. Obtained status code is {response.StatusCode}");
+                }
+                Assert.AreEqual(expectedHttpResponse, response.StatusCode, $"Unexpected Status code received from API.");
+            }
+            else
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
+        }
+
+        [When]
+        public void WhenTheUserTriesToCreateABookingWithInvalidInputWithInvalidDateValue()
+        {
+            string uri = testData["uri"];
+            string requestBody = testData["Request Body"];
+            var requestHeaders = GetRequestHeaders();
+            try
+            {
+                response = base.PostCall(uri, requestBody, requestHeaders);
+                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
+            }
+            catch (Exception ex)
+            {
+                Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected exception occurred while trying to create booking with invalid request body.\n{ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        [Then]
+        public void ThenBookingMustNotBeCreatedErrorMustBeThrownStatingInvalidDate()
+        {
+            string expectedResponse = testData["Expected Response Code"];
+            string expectedResponseMessage = testData["Expected Response Message"];
+            HttpStatusCode expectedHttpResponse = Utilities.Helpers.GetHttpStatusCodeFromStr(expectedResponse);
+            if (response != null)
+            {
+                if (response.StatusCode == expectedHttpResponse)
+                {
+                    Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking was not created successfully, as we have provided incorrect request body.");
+                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body={Environment.NewLine + response.Content}");
+                }
+                else
+                {
+                    Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected Status code received. Obtained status code is {response.StatusCode}");
+                }
+                Assert.AreEqual(expectedHttpResponse, response.StatusCode, $"Unexpected Status code received from API.");
+                if (response.Content.Contains(expectedResponseMessage))
+                    Utilities.ExtentReportsHelper.SetStepStatusPass($"API Response contains the expected error messate '{expectedResponseMessage}'");
+                else
+                    Utilities.ExtentReportsHelper.SetStepStatusWarning($"API response doesnot contain the expected error message '{expectedResponseMessage}'");
+            }
+            else
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
+        }
+
+        private static Dictionary<string, string> GetRequestHeaders()
+        {
+            Dictionary<string, string> requestHeaders = new Dictionary<string, string>();
+            requestHeaders.Add(Constants.API.HeaderConstants.ACCEPT, Constants.API.HeaderConstants.APPLICATION_JSON);
+            requestHeaders.Add(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
+            return requestHeaders;
         }
     }
 }
