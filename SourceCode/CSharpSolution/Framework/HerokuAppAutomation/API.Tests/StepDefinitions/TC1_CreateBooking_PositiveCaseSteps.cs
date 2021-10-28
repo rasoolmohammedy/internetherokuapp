@@ -1,5 +1,4 @@
-﻿using API.Base;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
@@ -14,6 +13,7 @@ namespace API.Tests.StepDefinitions
         private readonly FeatureContext featureContext;
         private RestClient restClient;
         private Dictionary<string, string> testData = null;
+        private IRestResponse response = null;
 
         public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient)
         {
@@ -29,7 +29,7 @@ namespace API.Tests.StepDefinitions
         [BeforeScenario]
         public void Initialize()
         {
-            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
+            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.API);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
         }
 
@@ -40,9 +40,8 @@ namespace API.Tests.StepDefinitions
         }
 
         [When]
-        public IRestResponse WhenTheUserTriesToCreateABookingWithValidInput()
+        public void WhenTheUserTriesToCreateABookingWithValidInput()
         {
-            IRestResponse response = null;
             string uri = testData["uri"];
             string requestBody = testData["Request Body"];
             Dictionary<string, string> requestHeaders = new Dictionary<string, string>();
@@ -57,11 +56,10 @@ namespace API.Tests.StepDefinitions
             {
                 Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected exception occurred while trying to create booking.\n{ex.Message}\n{ex.StackTrace}");
             }
-            return response;
         }
 
         [Then]
-        public void ThenBookingMustBeCreatedWithoutAnyError(IRestResponse response)
+        public void ThenBookingMustBeCreatedWithoutAnyError()
         {
             if (response != null)
             {

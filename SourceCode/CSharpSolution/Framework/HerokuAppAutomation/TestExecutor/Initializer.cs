@@ -30,7 +30,7 @@ namespace TestExecutor
         {
             #region Initializing Logger
             logger = LogManager.GetLogger(typeof(Initializer));
-            logger.Info($"Logger initialized. UI Automatioin Suite Execution Begins");
+            logger.Info($"Logger initialized. Automation Suite Execution Begins");
             #endregion
 
             #region Initializing Extent Report
