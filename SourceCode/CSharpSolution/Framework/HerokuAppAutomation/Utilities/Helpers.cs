@@ -20,7 +20,7 @@ namespace Utilities
             var reportBasePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.GlobalProperties.UI.BASEPATH);
             if (!Directory.Exists(reportBasePath))
                 Directory.CreateDirectory(reportBasePath);
-            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString("yyyy_MM_dd_H_mm_ss"));
+            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString(Constants.CURRENTDATETIMEFORMAT));
             Directory.CreateDirectory(reportPath);
             return reportPath;
         }

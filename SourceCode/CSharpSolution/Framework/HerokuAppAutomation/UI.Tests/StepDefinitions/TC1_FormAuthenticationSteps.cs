@@ -61,7 +61,6 @@ namespace UI.Tests.StepDefinitions
             Utilities.ExtentReportsHelper.SetStepStatusInfo($"Test data obtained for valid password is {validPassword}");
             p_formAuthentication.Login(validUsername, validPassword);
             Utilities.ExtentReportsHelper.SetStepStatusPass($"Username and password entered and login button clicked. Entered username='{validUsername}' password='{validPassword}'");
-
         }
         
         [When]
@@ -102,6 +101,7 @@ namespace UI.Tests.StepDefinitions
             Utilities.ExtentReportsHelper.SetStepStatusInfo($"Test data obtained for failure loging messgae is {failureLoginMessage}");
             p_formAuthentication.ValidateLoginSuccessMessage(failureLoginMessage);
             Utilities.ExtentReportsHelper.SetStepStatusPass($"After logging in with invalid credentials, user was not allowed to login to the application and failure message '{failureLoginMessage}' appeared on the screen");
+            Utilities.ExtentReportsHelper.SetStepStatusInfo($"Failure Message screenshot", Utilities.ScreenshotCapture.CaptureScreenshot(driver, Utilities.ExtentReportsHelper.currentReportPath));
         }
     }
 }

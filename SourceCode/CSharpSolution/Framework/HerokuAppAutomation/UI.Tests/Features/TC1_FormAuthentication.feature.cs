@@ -124,6 +124,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 16
  testRunner.When("I enter any invalid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 17
+ testRunner.Then("I must see failure error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

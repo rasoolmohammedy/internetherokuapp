@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AventStack.ExtentReports.MarkupUtils;
 
 namespace Utilities
 {
     public static class ExtentReportsHelper
     {
         public static ExtentReports extent { get; set; }
-        public static ExtentV3HtmlReporter reporter { get; set; }
+        public static ExtentHtmlReporter reporter { get; set; }
         public static ExtentTest test { get; set; }
 
         public static string currentReportPath;
@@ -19,7 +20,8 @@ namespace Utilities
         {
             currentReportPath = reportPath;
             extent = new ExtentReports();
-            reporter = new ExtentV3HtmlReporter(reportPath);
+            reporter = new ExtentHtmlReporter(reportPath);
+            reporter.Config.CSS ="img.r-img { width: 100%; }";
             reporter.Config.DocumentTitle = docTitle;
             reporter.Config.ReportName = reportName;
             reporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Standard;
@@ -46,6 +48,13 @@ namespace Utilities
         {
             test.Log(Status.Info, stepDescription);
         }
+
+        public static void SetStepStatusInfo(string stepDescription, string screenshotPath)
+        {
+            MediaEntityModelProvider meiaModel = MediaEntityBuilder.CreateScreenCaptureFromPath(screenshotPath).Build();
+            test.Log(Status.Info, stepDescription, meiaModel);
+        }
+
         public static void SetTestStatusPass()
         {
             test.Pass("Test Executed Sucessfully!");
@@ -61,7 +70,7 @@ namespace Utilities
         }
         public static void AddTestFailureScreenshot(string base64ScreenCapture)
         {
-            test.AddScreenCaptureFromBase64String(base64ScreenCapture, "Screenshot on Error:");
+            test.AddScreenCaptureFromPath(base64ScreenCapture, "Screenshot on Error:");  
         }
         public static void SetTestStatusSkipped()
         {

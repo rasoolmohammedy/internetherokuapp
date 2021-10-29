@@ -9,8 +9,8 @@
     <ProjectGuid>{AEA2A220-E8FB-44D5-8E14-B744997C7408}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestExecutor</RootNamespace>
-    <AssemblyName>TestExecutor</AssemblyName>
+    <RootNamespace>TestInitializer</RootNamespace>
+    <AssemblyName>TestInitializer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

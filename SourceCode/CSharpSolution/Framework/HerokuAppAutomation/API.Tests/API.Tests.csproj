@@ -117,6 +117,10 @@
       <Project>{6F72BC90-78C2-4FEA-BC89-13C7189E6F5D}</Project>
       <Name>API.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestInitializer\TestInitializer.csproj">
+      <Project>{aea2a220-e8fb-44d5-8e14-b744997c7408}</Project>
+      <Name>TestInitializer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{1150D16D-F076-4B68-A34F-43ECD262EF47}</Project>
       <Name>Utilities</Name>

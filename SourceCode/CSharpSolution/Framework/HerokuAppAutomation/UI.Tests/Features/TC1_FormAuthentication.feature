@@ -14,3 +14,4 @@ Scenario: Test Case 1 - Form Authentication Demonstration
 	When I read those stored username and password file from test data file and try to login with those credentials
 	Then User must be logged in successfully
 	When I enter any invalid credentials
+	Then I must see failure error message
