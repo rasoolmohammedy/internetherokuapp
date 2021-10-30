@@ -8,6 +8,8 @@ using TechTalk.SpecFlow;
 using Utilities;
 using Newtonsoft.Json.Linq;
 using static Utilities.Constants;
+using System.Collections;
+using static Utilities.ExcelDataManager;
 
 namespace API.Tests.StepDefinitions
 {
@@ -59,6 +61,7 @@ namespace API.Tests.StepDefinitions
                 Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected exception occurred while trying to create booking.\n{ex.Message}\n{ex.StackTrace}");
             }
         }
+
 
         [Then]
         public void ThenBookingMustBeCreatedWithoutAnyError()
@@ -187,7 +190,5 @@ namespace API.Tests.StepDefinitions
             else
                 Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
         }
-
-
-    }
+     }
 }

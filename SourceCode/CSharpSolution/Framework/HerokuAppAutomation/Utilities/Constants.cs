@@ -73,6 +73,7 @@ namespace Utilities
         public static class API
         {
             public const string AUTHURI = "auth";
+            public const string TCTOGENBOOKINGID = "Test Case 01 - Create Booking Postive scenario";
             public static class HeaderConstants
             {
                 public const string APPLICATION_JSON = "application/json";

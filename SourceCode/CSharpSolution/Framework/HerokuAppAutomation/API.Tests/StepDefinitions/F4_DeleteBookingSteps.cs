@@ -46,6 +46,7 @@ namespace API.Tests.StepDefinitions
         [When]
         public void WhenTheUserTriesToDeleteABookingWithValidBookingId()
         {
+            Initialize();
             string uri = testData["uri"];
             string BookingId = testData["Valid Booking ID"];
             uri = string.Format(uri, BookingId);

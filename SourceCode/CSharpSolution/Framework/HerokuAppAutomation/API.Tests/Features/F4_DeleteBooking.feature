@@ -6,9 +6,7 @@ e.g: Invalid Date and invalid auth token
 
 @API @DeleteBooking
 Scenario: Test Case 08 - Delete Booking Postive scenario
-	When the user tries to create a booking with valid input
-	Then Booking must be created without any error
-	And Store the created Booking ID back to Test Data
+	Given a valid Booking ID generated
 	When User requests a Auth token
 	Then A valid Auth token must be granted and update the token into Test Data at "36" row
 	When the user tries to delete a booking with valid booking id
@@ -23,8 +21,6 @@ Scenario: Test Case 09 - Delete Booking Negative scenario with invalid Booking I
 
 @API @DeleteBooking
 Scenario: Test Case 10 - Delete Booking Negative scenario with invalid Auth Token
-	When the user tries to create a booking with valid input
-	Then Booking must be created without any error
-	And Store the created Booking ID back to Test Data
+	Given a valid Booking ID generated
 	When the user tries to delete a booking with invalid Auth Token with a valid Booking Id
 	Then Forbidden Error message should be returned to the user

@@ -1,4 +1,5 @@
 ﻿using API.Base;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
 using System;
@@ -124,5 +125,54 @@ namespace API.Tests.StepDefinitions
             else
                 Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
         }
+
+        [Given]
+        public void GivenAValidBookingIDGenerated()
+        {
+            var testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, Constants.API.TCTOGENBOOKINGID);
+            string uri = testData["uri"];
+            string requestBody = testData["Request Body"];
+            var requestHeaders = Utilities.Helpers.GetRequestHeaders(new RequestHeaders[] { RequestHeaders.ACCEPT, RequestHeaders.CONTENT_TYPE });
+            try
+            {
+                response = base.PostCall(uri, requestBody, requestHeaders);
+            }
+            catch (Exception ex)
+            {
+                Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected exception occurred while trying to create booking.\n{ex.Message}\n{ex.StackTrace}");
+            }
+            string expectedResponse = testData["Expected Response Code"];
+            HttpStatusCode expectedHttpResponse = Utilities.Helpers.GetHttpStatusCodeFromStr(expectedResponse);
+            if (response != null)
+            {
+                if (response.StatusCode == expectedHttpResponse)
+                {
+                    Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking created successfully.");
+                }
+                else
+                {
+                    Utilities.ExtentReportsHelper.SetTestStatusFail($"Unexpected Status code received. Obtained status code is {response.StatusCode}");
+                }
+            }
+            else
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
+            try
+            {
+                dynamic api = JObject.Parse(response.Content);
+                int bookingId = api.bookingid;
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 6, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 16, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 25, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 31, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 37, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 47, 4, bookingId.ToString());
+                Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
+            }
+            catch (Exception e)
+            {
+                Utilities.ExtentReportsHelper.SetTestStatusFail("Unexpected error occurred while trying to retrieve the booking Id from the API response and writing onto the test data excel");
+            }
+        }
+
     }
 }

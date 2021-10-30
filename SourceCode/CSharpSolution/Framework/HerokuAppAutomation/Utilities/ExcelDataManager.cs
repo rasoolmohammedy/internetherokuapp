@@ -12,6 +12,11 @@ namespace Utilities
 {
     public static class ExcelDataManager
     {
+        public class ExcelCell
+        {
+            int rowNo;
+            int colNo;
+        }
         public static Dictionary<string, string> GetTestData(Constants.SuiteType suiteType, string testcaseName)
         {
             Dictionary<string, string> testData = new Dictionary<string, string>();

@@ -6,9 +6,7 @@ e.g: Invalid Booking ID
 
 @API @GetBooking
 Scenario: Test Case 04 - Get Booking Postive scenario
-	When the user tries to create a booking with valid input
-	Then Booking must be created without any error
-	And Store the created Booking ID back to Test Data
+	Given a valid Booking ID generated
 	When the user tries to get a booking with valid booking ID
 	Then Booking information for that particular Booking ID must be returned to the user
 
