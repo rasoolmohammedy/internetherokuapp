@@ -75,16 +75,16 @@ namespace API.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test Case 4 - Get Booking Postive scenario")]
+        [NUnit.Framework.DescriptionAttribute("Test Case 04 - Get Booking Postive scenario")]
         [NUnit.Framework.CategoryAttribute("API")]
         [NUnit.Framework.CategoryAttribute("GetBooking")]
-        public virtual void TestCase4_GetBookingPostiveScenario()
+        public virtual void TestCase04_GetBookingPostiveScenario()
         {
             string[] tagsOfScenario = new string[] {
                     "API",
                     "GetBooking"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 4 - Get Booking Postive scenario", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 04 - Get Booking Postive scenario", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -106,9 +106,18 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.When("the user tries to get a booking with valid booking ID", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user tries to create a booking with valid input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
+ testRunner.Then("Booking must be created without any error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 11
+ testRunner.And("Store the created Booking ID back to Test Data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
+ testRunner.When("the user tries to get a booking with valid booking ID", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
  testRunner.Then("Booking information for that particular Booking ID must be returned to the user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -116,17 +125,17 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test Case 5 - Get Booking Negative scenario with invalid Booking ID")]
+        [NUnit.Framework.DescriptionAttribute("Test Case 05 - Get Booking Negative scenario with invalid Booking ID")]
         [NUnit.Framework.CategoryAttribute("API")]
         [NUnit.Framework.CategoryAttribute("GetBooking")]
-        public virtual void TestCase5_GetBookingNegativeScenarioWithInvalidBookingID()
+        public virtual void TestCase05_GetBookingNegativeScenarioWithInvalidBookingID()
         {
             string[] tagsOfScenario = new string[] {
                     "API",
                     "GetBooking"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 5 - Get Booking Negative scenario with invalid Booking ID", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 05 - Get Booking Negative scenario with invalid Booking ID", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -146,10 +155,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 17
  testRunner.When("the user tries to get a booking with invalid booking ID", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 18
  testRunner.Then("Error message should be returned to the user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

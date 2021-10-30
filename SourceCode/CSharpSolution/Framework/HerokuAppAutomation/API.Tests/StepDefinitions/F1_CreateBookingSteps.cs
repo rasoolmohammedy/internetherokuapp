@@ -7,6 +7,7 @@ using NUnit.Framework;
 using TechTalk.SpecFlow;
 using Utilities;
 using Newtonsoft.Json.Linq;
+using static Utilities.Constants;
 
 namespace API.Tests.StepDefinitions
 {
@@ -47,7 +48,7 @@ namespace API.Tests.StepDefinitions
         {
             string uri = testData["uri"];
             string requestBody = testData["Request Body"];
-            var requestHeaders = GetRequestHeaders();
+            var requestHeaders = Utilities.Helpers.GetRequestHeaders(new RequestHeaders[] {RequestHeaders.ACCEPT,RequestHeaders.CONTENT_TYPE });
             try
             {
                 response = base.PostCall(uri, requestBody, requestHeaders);
@@ -90,6 +91,10 @@ namespace API.Tests.StepDefinitions
                 int bookingId = api.bookingid;
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API,6,4, bookingId.ToString());
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 16, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 25, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 31, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 37, 4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 47, 4, bookingId.ToString());
                 Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
             }
             catch (Exception e)
@@ -105,7 +110,7 @@ namespace API.Tests.StepDefinitions
         {
             string uri = testData["uri"];
             string requestBody = testData["Request Body"];
-            var requestHeaders = GetRequestHeaders();
+            var requestHeaders = Helpers.GetRequestHeaders(new RequestHeaders[] { RequestHeaders.ACCEPT, RequestHeaders.CONTENT_TYPE });
             try
             {
                 response = base.PostCall(uri, requestBody, requestHeaders);
@@ -144,7 +149,7 @@ namespace API.Tests.StepDefinitions
         {
             string uri = testData["uri"];
             string requestBody = testData["Request Body"];
-            var requestHeaders = GetRequestHeaders();
+            var requestHeaders = Helpers.GetRequestHeaders(new RequestHeaders[] { RequestHeaders.ACCEPT, RequestHeaders.CONTENT_TYPE });
             try
             {
                 response = base.PostCall(uri, requestBody, requestHeaders);
@@ -160,7 +165,7 @@ namespace API.Tests.StepDefinitions
         public void ThenBookingMustNotBeCreatedErrorMustBeThrownStatingInvalidDate()
         {
             string expectedResponse = testData["Expected Response Code"];
-            string expectedResponseMessage = testData["Expected Response Message"];
+            string expectedResponseMessage = testData["Expected Response Body"];
             HttpStatusCode expectedHttpResponse = Utilities.Helpers.GetHttpStatusCodeFromStr(expectedResponse);
             if (response != null)
             {
@@ -183,12 +188,6 @@ namespace API.Tests.StepDefinitions
                 Utilities.ExtentReportsHelper.SetTestStatusFail("Test case execution failed!.");
         }
 
-        private static Dictionary<string, string> GetRequestHeaders()
-        {
-            Dictionary<string, string> requestHeaders = new Dictionary<string, string>();
-            requestHeaders.Add(Constants.API.HeaderConstants.ACCEPT, Constants.API.HeaderConstants.APPLICATION_JSON);
-            requestHeaders.Add(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
-            return requestHeaders;
-        }
+
     }
 }

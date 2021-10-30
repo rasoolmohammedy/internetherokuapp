@@ -10,6 +10,7 @@ using Utilities;
 using RestSharp.Serialization.Json;
 using RestSharp.Serializers.NewtonsoftJson;
 using AventStack.ExtentReports;
+using static Utilities.Constants;
 
 namespace API.Base
 {
@@ -25,14 +26,10 @@ namespace API.Base
         }
 
         #region Discrete Operations
-        protected IRestResponse PostCall(string uri, string body, Dictionary<string,string> requestHeaders)
+        protected IRestResponse PostCall(string uri, string body, Dictionary<RequestHeaders, string> requestHeaders)
         {
-            RestRequest request = new RestRequest(uri, Method.POST);
-            IRestResponse response = null;
-            request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(body);
-            foreach (var header in requestHeaders)
-                request.AddHeader(header.Key, header.Value);
+            IRestResponse response;
+            RestRequest request = PrepareRestRequest(uri,Method.POST, requestHeaders, body);
             try
             {
                 response = client.Execute(request);
@@ -44,17 +41,15 @@ namespace API.Base
                 var msg = $"Unexpected exception occurred while trying to perform post call on the URI {uri}" +
                           ex.Message;
                 logger.Debug(msg);
-                throw new Exception(msg,ex);
+                throw new Exception(msg, ex);
             }
             return response;
         }
 
-        protected IRestResponse GetCall(string uri)
+        protected IRestResponse GetCall(string uri, Dictionary<RequestHeaders, string> requestHeaders)
         {
-            RestRequest request = new RestRequest(uri, Method.GET);
             IRestResponse response = null;
-            request.AddHeader(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
-            request.AddHeader(Constants.API.HeaderConstants.ACCEPT, Constants.API.HeaderConstants.APPLICATION_JSON);
+            RestRequest request = PrepareRestRequest(uri, Method.GET, requestHeaders);
             try
             {
                 response = client.Execute(request);
@@ -71,20 +66,15 @@ namespace API.Base
             return response;
         }
 
-        protected IRestResponse PutCall(string uri,string body, string token)
+        protected IRestResponse PutCall(string uri, Dictionary<RequestHeaders, string> requestHeaders, string body, Dictionary<Cookies, string> cookies)
         {
-            RestRequest request = new RestRequest(uri, Method.PUT);
             IRestResponse response = null;
-            request.RequestFormat = DataFormat.Json;
-            request.AddHeader(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
-            request.AddHeader(Constants.API.HeaderConstants.ACCEPT, Constants.API.HeaderConstants.APPLICATION_JSON);
-            request.AddHeader(Constants.API.HeaderConstants.COOKIE, string.Format(Constants.API.HeaderConstants.APPLICATION_JSON,token));
-            request.AddBody(body);
+            RestRequest request = PrepareRestRequest(uri, Method.PUT, requestHeaders,body, cookies);
             try
             {
                 response = client.Execute(request);
                 logger.Debug($"API with PUT method has been executed successfully.");
-                logger.Debug($"Status Code of the GET Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
+                logger.Debug($"Status Code of the PUT Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
@@ -96,18 +86,15 @@ namespace API.Base
             return response;
         }
 
-        protected IRestResponse DeleteCall(string uri, string bookingId, string token)
+        protected IRestResponse DeleteCall(string uri, Dictionary<RequestHeaders, string> requestHeaders, Dictionary<Cookies, string> cookies)
         {
-            RestRequest request = new RestRequest(uri, Method.DELETE);
             IRestResponse response = null;
-            request.RequestFormat = DataFormat.Json;
-            request.AddHeader(Constants.API.HeaderConstants.CONTENT_TYPE, Constants.API.HeaderConstants.APPLICATION_JSON);
-            request.AddHeader(Constants.API.HeaderConstants.COOKIE, string.Format(Constants.API.HeaderConstants.APPLICATION_JSON, token));
+            RestRequest request = PrepareRestRequest(uri, Method.DELETE, requestHeaders,cookies:cookies);
             try
             {
                 response = client.Execute(request);
-                logger.Debug($"API with PUT method has been executed successfully.");
-                logger.Debug($"Status Code of the GET Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
+                logger.Debug($"API with Delete method has been executed successfully.");
+                logger.Debug($"Status Code of the DELETE Method is {response.StatusCode + Environment.NewLine} Response is {response.Content}");
             }
             catch (Exception ex)
             {
@@ -133,12 +120,50 @@ namespace API.Base
                 PrintOnReportJsonObjects(expectedJsonString, actualJsonString);
             }
         }
+
+        protected void AssertNonJsonResponess(string expectedNonJsonString, string actualNonJsonString)
+        {
+            bool isEqual = expectedNonJsonString == actualNonJsonString;
+            if (isEqual)
+            {
+                ExtentReportsHelper.SetStepStatusPass("Expected response string and actual response string  are equal.");
+                PrintOnReportNonJsonStrings(expectedNonJsonString, actualNonJsonString);
+            }
+            else
+            {
+                ExtentReportsHelper.SetTestStatusFail("Expected response string and actual response string  are not equal.");
+                PrintOnReportNonJsonStrings(expectedNonJsonString, actualNonJsonString);
+            }
+        }
+
+        private static void PrintOnReportNonJsonStrings(string expectedNonJsonString, string actualNonJsonString)
+        {
+            ExtentReportsHelper.SetStepStatusInfo($"Expected Response String is '{expectedNonJsonString}'");
+            ExtentReportsHelper.SetStepStatusInfo($"Actual Response String is '{actualNonJsonString}'");
+        }
         #endregion
 
         private void PrintOnReportJsonObjects(string expectedJsonString, string actualJsonString)
         {
+            ExtentReportsHelper.SetStepStatusInfo($"Expected JSON objected is printed below:");
             ExtentReportsHelper.SetStepStatusInfoJsonMarkup(expectedJsonString);
+            ExtentReportsHelper.SetStepStatusInfo($"Actual JSON objected is printed below:");
             ExtentReportsHelper.SetStepStatusInfoJsonMarkup(actualJsonString);
+        }
+
+        private static RestRequest PrepareRestRequest(string uri, Method methodType, Dictionary<RequestHeaders, string> requestHeaders, string body=null, Dictionary<Cookies, string> cookies=null)
+        {
+            RestRequest request = new RestRequest(uri, methodType);
+            if (body != null)
+                request.AddJsonBody(body);
+            if(cookies!=null)
+                foreach (KeyValuePair<Cookies,string> cookie in cookies)
+                {
+                    request.AddCookie(cookie.Key.ToDescriptionString(), cookie.Value);
+                }
+            foreach (KeyValuePair< RequestHeaders,string> header in requestHeaders)
+                request.AddHeader(header.Key.ToDescriptionString(), header.Value);
+            return request;
         }
     }
 }

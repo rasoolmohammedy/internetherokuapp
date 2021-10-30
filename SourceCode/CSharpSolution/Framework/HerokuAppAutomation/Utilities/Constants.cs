@@ -1,14 +1,17 @@
 ﻿using log4net;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static Utilities.Constants;
 
 namespace Utilities
 {
-    public static class Constants
+     public static class Constants
     {
         public const string CHROMEDRIVERRELATIVEPATH = @"Resources";
         public const string TESTDATAFILEPATH = @"Data\TestData.xlsx";
@@ -25,6 +28,20 @@ namespace Utilities
         {
             UI,
             API
+        }
+
+        public enum RequestHeaders
+        {
+            [Description("Content-Type")]
+            CONTENT_TYPE,
+            [Description("Accept")]
+            ACCEPT,
+        }
+
+        public enum Cookies
+        {
+            [Description("token")]
+            TOKEN
         }
 
         public static class TestDataConsts
@@ -55,12 +72,10 @@ namespace Utilities
 
         public static class API
         {
+            public const string AUTHURI = "auth";
             public static class HeaderConstants
             {
-                public const string CONTENT_TYPE = "Content-Type";
-                public const string ACCEPT = "Accept";
                 public const string APPLICATION_JSON = "application/json";
-                public const string COOKIE = "Cookie";
                 public const string COOKIEVALUE= "token={0}";
             }
         }

@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Utilities.Constants;
 
 namespace Utilities
 {
@@ -66,6 +67,16 @@ namespace Utilities
             var left = JToken.Parse(jsonStr1);
             var right = JToken.Parse(jsonStr2);
             return JToken.DeepEquals(left, right);
+        }
+
+        public static Dictionary<RequestHeaders, string> GetRequestHeaders(RequestHeaders[] headerKey)
+        {
+            Dictionary<RequestHeaders, string> requestHeaders = new Dictionary<RequestHeaders, string>();
+            foreach (var key in headerKey)
+            {
+                    requestHeaders.Add(key, Constants.API.HeaderConstants.APPLICATION_JSON);
+            }
+            return requestHeaders;
         }
     }
 }

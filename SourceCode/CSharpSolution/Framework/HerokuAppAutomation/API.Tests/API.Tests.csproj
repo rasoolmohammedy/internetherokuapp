@@ -104,14 +104,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\F1_CreateBooking.feature.cs" />
+    <Compile Include="Features\F2_Getooking.feature.cs" />
+    <Compile Include="Features\F3_UpdateBooking.feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\F1_CreateBookingSteps.cs" />
     <Compile Include="StepDefinitions\F2_GetookingSteps.cs" />
+    <Compile Include="StepDefinitions\F3_UpdateBookingSteps.cs" />
+    <Compile Include="StepDefinitions\F4_DeleteBookingSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Features\F1_CreateBooking.feature" />
     <None Include="Features\F2_Getooking.feature" />
+    <None Include="Features\F3_UpdateBooking.feature" />
+    <None Include="Features\F4_DeleteBooking.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
