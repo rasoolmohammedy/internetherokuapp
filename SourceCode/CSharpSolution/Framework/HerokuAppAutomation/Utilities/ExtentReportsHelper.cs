@@ -55,6 +55,11 @@ namespace Utilities
             test.Log(Status.Info, stepDescription, meiaModel);
         }
 
+        public static void SetStepStatusInfoJsonMarkup(string jsonString)
+        {
+            test.Info(MarkupHelper.CreateCodeBlock(jsonString, CodeLanguage.Json));
+        }
+
         public static void SetTestStatusPass()
         {
             test.Pass("Test Executed Sucessfully!");

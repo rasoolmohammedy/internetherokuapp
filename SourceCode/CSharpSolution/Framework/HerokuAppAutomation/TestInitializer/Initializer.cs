@@ -81,6 +81,9 @@ namespace TestExecutor
                     default:
                         throw new Exception($"Unexpected browser type supplied in properties file. Kindly check the browser type specified in {Constants.PropFileConsts.UIGLOBALPROPERTIESFILENAME} is valid.");
                 }
+                #region Extent Report Create Test
+                Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
+                #endregion
                 objectcontainer.RegisterInstanceAs<IWebDriver>(driver);
                 KillChromeAndChromeDriverProcesses();
             }
@@ -89,12 +92,12 @@ namespace TestExecutor
                 #region Initializing Rest Client
                 restClient = new RestClient(Constants.GlobalProperties.API.BASEURL);
                 #endregion
+                #region Extent Report Create Test
+                Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.API);
+                #endregion
                 objectcontainer.RegisterInstanceAs<RestClient>(restClient);
             }
             logger.Info(string.Format("Entering Before scenario: {0}, Feature: {1}", scenarioContext.ScenarioInfo.Title, featureContext.FeatureInfo.Title));
-            #region Extent Report Create Test
-            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.UI);
-            #endregion
         }
 
         [AfterScenario(Order = 1000)]

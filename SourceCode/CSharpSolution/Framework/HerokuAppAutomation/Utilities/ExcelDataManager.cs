@@ -48,6 +48,7 @@ namespace Utilities
                             }
                         };
                         var result = reader.AsDataSet(conf);
+                        stream.Close();
                         return result;
                     }
                 }
@@ -68,6 +69,7 @@ namespace Utilities
             myWorksheet.Cells[2, 4].Value = username;
             myWorksheet.Cells[3, 4].Value = password;
             p.Save();
+            p.Dispose();
         }
 
 
@@ -76,8 +78,9 @@ namespace Utilities
             FileInfo fileInfo = new FileInfo(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.TESTDATAFILEPATH));
             ExcelPackage p = new ExcelPackage(fileInfo);
             ExcelWorksheet myWorksheet = p.Workbook.Worksheets[suiteType == Constants.SuiteType.UI? Constants.TestDataConsts.WORKSHEET_UI_SUITE:Constants.TestDataConsts.WORKSHEET_API_SUITE];
-            myWorksheet.Cells[rowNumber, colNumber].Value = data;
+            myWorksheet.Cells[rowNumber, colNumber].Value = Convert.ToInt32(data);
             p.Save();
+            p.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using log4net;
+using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,13 @@ namespace Utilities
                 logger.Debug($"inValid string is provided. Unable to convert to a valid HTTP Status Code. Provided string is {str}");
                 throw new Exception($"Unexpected string is provided for HTTP status code. {str}");
             }
+        }
+
+        public static bool Compare2JsonStrings(string jsonStr1, string jsonStr2)
+        {
+            var left = JToken.Parse(jsonStr1);
+            var right = JToken.Parse(jsonStr2);
+            return JToken.DeepEquals(left, right);
         }
     }
 }

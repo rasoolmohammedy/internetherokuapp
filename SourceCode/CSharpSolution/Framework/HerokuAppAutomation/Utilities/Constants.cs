@@ -14,6 +14,7 @@ namespace Utilities
         public const string TESTDATAFILEPATH = @"Data\TestData.xlsx";
         public const string REPORTFILENAME = "ExtentReport.html";
         public const string CURRENTDATETIMEFORMAT = "yyyy_MM_dd_H_mm_ss";
+        public const string REPLACER = "@@@";
 
         public enum BrowserTypes
         {

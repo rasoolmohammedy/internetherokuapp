@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace API.Tests.StepDefinitions
 {
     [Binding]
-    public class TC1_CreateBooking_PositiveCaseSteps : BaseClass
+    public class F1_CreateBookingSteps : BaseClass
     {
         private readonly ScenarioContext scenarioContext;
         private readonly FeatureContext featureContext;
@@ -19,7 +19,7 @@ namespace API.Tests.StepDefinitions
         private Dictionary<string, string> testData = null;
         private IRestResponse response = null;
 
-        public TC1_CreateBooking_PositiveCaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient) : base(restClient)
+        public F1_CreateBookingSteps(ScenarioContext scenarioContext, FeatureContext featureContext, RestClient restClient) : base(restClient)
         {
             if (scenarioContext == null) throw new ArgumentNullException("scenarioContext");
             this.scenarioContext = scenarioContext;
@@ -30,10 +30,9 @@ namespace API.Tests.StepDefinitions
             this.restClient = restClient;
         }
 
-        [BeforeScenario]
+        [BeforeScenario("CreateBooking")]
         public void Initialize()
         {
-            Utilities.ExtentReportsHelper.CreateTest(scenarioContext.ScenarioInfo.Title, Constants.SuiteType.API);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
         }
 
@@ -89,7 +88,8 @@ namespace API.Tests.StepDefinitions
             {
                 dynamic api = JObject.Parse(response.Content);
                 int bookingId = api.bookingid;
-                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API,5,4, bookingId.ToString()); ;
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API,6,4, bookingId.ToString());
+                Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 16, 4, bookingId.ToString());
                 Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
             }
             catch (Exception e)
