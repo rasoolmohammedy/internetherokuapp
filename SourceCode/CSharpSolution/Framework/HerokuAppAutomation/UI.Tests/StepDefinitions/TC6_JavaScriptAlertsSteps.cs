@@ -57,7 +57,11 @@ namespace UI.Tests.StepDefinitions
         [When]
         public void WhenUserClicksCancelButton()
         {
-
+            bool isAlertDismissed = p_jsalerts.DismissAlert();
+            if (isAlertDismissed)
+                ExtentReportsHelper.SetStepStatusPass($"Alert displayed on the web browser is successfully dismissed.");
+            else
+                ExtentReportsHelper.SetTestStatusFail($"Unable to dismiss the Alert popup displayed on the web browser.");
         }
 
         [Then]
@@ -71,7 +75,7 @@ namespace UI.Tests.StepDefinitions
         [Then]
         public void ThenUserShouldBeAbleToSeeCancelledValidationTextMessageOnScreen()
         {
-            string expectedResultMsg = testData["Button Text"];
+            string expectedResultMsg = testData["Result Text Message"];
             p_jsalerts.ValidateResultTextMessage(expectedResultMsg);
             ExtentReportsHelper.SetStepStatusPass($"'{expectedResultMsg}' message is present on the page which is as expected, after clickiing on Cancel button from the JavaScript Alert");
         }
@@ -87,7 +91,12 @@ namespace UI.Tests.StepDefinitions
         [Then]
         public void ThenJavaScriptAlertMustBeShown()
         {
+            p_jsalerts.ValidateWhetherAlertIsShown();
+            string alertText = p_jsalerts.GetAlertText();
+            if(alertText!=null)
+                ExtentReportsHelper.SetStepStatusPass($"Text message displayed on the alert popup is '{alertText}'.");
+            else
+                ExtentReportsHelper.SetTestStatusFail($"Unable to get text message from alert displayed.");
         }
-
     }
 }

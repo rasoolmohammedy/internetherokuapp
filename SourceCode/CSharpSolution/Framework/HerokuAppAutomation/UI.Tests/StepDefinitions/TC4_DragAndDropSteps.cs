@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using TechTalk.SpecFlow;
 using UI.Pom;
 using Utilities;
@@ -97,6 +98,7 @@ namespace UI.Tests.StepDefinitions
         public void ThenTakeScreenshotOfTheCurrentWindow()
         {
             Utilities.ExtentReportsHelper.SetStepStatusInfo($"Current snapshot of the webdriver is captured.", ScreenshotCapture.CaptureScreenshot(driver, Utilities.ExtentReportsHelper.currentReportPath));
+            Thread.Sleep(new TimeSpan(0,0,2));
         }
 
     }

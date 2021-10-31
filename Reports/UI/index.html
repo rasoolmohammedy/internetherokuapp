@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Automation Testing Report</title>
+  <link rel="apple-touch-icon" href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png">
+  <link rel="shortcut icon" href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png">
+  <link href="https://cdn.rawgit.com/extent-framework/extent-github-cdn/cd00a5e/spark/css/style.css" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>img.r-img { width: 100%; } </style>
+</head>
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/7cc78ce/spark/js/jsontree.js"></script>
+
+
+
+<body class="test-view  standard">
+    <div class="app header-dark side-nav-folded">
+        <div class="layout">
+            <div class="header navbar">
+    <div class="header-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <div class="logo logo-dark" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+            <div class="logo logo-white" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+          </a>
+        </div>
+        <ul class="nav-left">
+          <li>
+            <a class="sidenav-fold-toggler" href="javascript:void(0);">
+              <i class="fa fa-bars"></i>
+            </a>
+            <a class="sidenav-expand-toggler" href="javascript:void(0);">
+              <i class="fa fa-bars"></i>
+            </a>
+          </li>
+          <li class="search-box">
+            <a class="search-toggle" href="javascript:void(0);">
+              <i class="search-icon fa fa-search"></i>
+              <i class="search-icon-close fa fa-close"></i>
+            </a>
+          </li>
+          <li class="search-input">
+            <input id="search-tests" class="form-control" type="text" placeholder="Type to search...">
+          </li>
+        </ul>
+        <ul class="nav-right">
+          <li class="m-r-10">
+            <a href="#">
+              <span class="badge badge-primary">Regression Testing</span>
+            </a>
+          </li>
+            <li class="m-r-10">
+                <a href="#">
+                    <span class="badge badge-primary">10/31/2021 9:51:35 AM</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+            <div class="side-nav side-nav-folded">
+  <div class="side-nav-inner">
+    <ul class="side-nav-menu scrollable">
+      <li class="nav-item dropdown">
+        <a id="nav-test" class="dropdown-toggle" href="index.html">
+          <span class="icon-holder">
+            <i class="fa fa-align-left"></i>
+          </span>
+          <span class="title">Tests</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a id="nav-tag" class="dropdown-toggle" href="tag.html">
+          <span class="icon-holder">
+            <i class="fa fa-tag"></i>
+          </span>
+          <span class="title">Tags</span>
+        </a>
+      </li>
+            <li class="nav-item dropdown">
+        <a id="nav-dashboard" class="dropdown-toggle" href="dashboard.html">
+          <span class="icon-holder">
+            <i class="fa fa-bar-chart"></i>
+          </span>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="side-nav-controls">
+    <ul>
+      <li>
+        <a href="#" class="lightsout" style="color:#8a8a8a;">
+          <i class="fa fa-desktop"></i>"</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+            <div class="page-container">
+                <div class="main-content">
+                    <div class="test-wrapper row">
+                        <div class="test-list">
+                            <div class="test-list-tools">
+                                <ul class="tools pull-left">
+                                    <li>
+                                        <a href="">
+                                            <span class="font-size-14">Tests</span>
+                                        </a>
+                                    </li> 
+                                </ul>
+                                <ul class="tools text-right">
+									<li class="user-profile dropdown dropdown-animated scale-left">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-exclamation-circle"></i>
+										</a>
+										<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a status="pass" class="dropdown-item" href="#"><span>Pass</span><span class="status success pull-right"></span></a>																																																																		<div class="dropdown-divider"></div>
+											<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+										</ul>
+									</li>
+																		<li class="user-profile dropdown dropdown-animated scale-left">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<i class="fa fa-tag"></i>
+										</a>
+										<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+												<a class="dropdown-item" href="#">UI</a>
+										</ul>
+                                    </li>
+									                                </ul>
+                            </div>
+                            <div class="test-list-wrapper scrollable">
+                                <ul class="test-list-item">
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 1 - Form Authentication Demonstration</p> 
+													<p class="duration text-sm">0h:0m:7s+238ms</p> 
+													<span class="datetime">09:51:38 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 1 - Form Authentication Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:51:38 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:51:45 AM</span>
+															<span class='badge badge-default'>0h:0m:7s+238ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:40</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:41</td>
+				<td>
+Form Authentication link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:41</td>
+				<td>
+Obtained username from web application is 'tomsmith and the password is SuperSecretPassword!'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:41</td>
+				<td>
+Credentials obtained from web application is stored into Test Data Excel file successfully.'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:41</td>
+				<td>
+Test data obtained for valid username is tomsmith									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:41</td>
+				<td>
+Test data obtained for valid password is SuperSecretPassword!									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:43</td>
+				<td>
+Username and password entered and login button clicked. Entered username='tomsmith' password='SuperSecretPassword!'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:43</td>
+				<td>
+Test data obtained for success login messgae is You logged into a secure area!									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:43</td>
+				<td>
+After logging in with valid credentials, user successfully logged in to the application and success message 'You logged into a secure area!' appeared on the screen									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:43</td>
+				<td>
+Test data obtained for invalid username is InvalidUserName									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:43</td>
+				<td>
+Test data obtained for invalid password is InvalidPassword									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:44</td>
+				<td>
+Username and password entered and login button clicked. Entered username='InvalidUserName' password='InvalidPassword'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:44</td>
+				<td>
+Test data obtained for failure loging messgae is Your username is invalid!									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:51:45</td>
+				<td>
+After logging in with invalid credentials, user was not allowed to login to the application and failure message 'Your username is invalid!' appeared on the screen									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:51:45</td>
+				<td>
+Failure Message screenshot					<img class='r-img' title='' onerror='this.style.display="none"' data-featherlight='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_51_45.png' src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_51_45.png' data-src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_51_45.png'>				</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 2 - Dynamic Loading Demonstration</p> 
+													<p class="duration text-sm">0h:0m:8s+899ms</p> 
+													<span class="datetime">09:52:17 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 2 - Dynamic Loading Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:52:17 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:52:26 AM</span>
+															<span class='badge badge-default'>0h:0m:8s+899ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:19</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:20</td>
+				<td>
+Dynamic Loading link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:20</td>
+				<td>
+Example 2 viz., 'Example 2: Element rendered after the fact' link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:20</td>
+				<td>
+Start button with text 'Start' is clicked successfully.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:21</td>
+				<td>
+Progress bar with text 'Loading... ' appeared and waiting without any hard coded value till the progress bar disappear.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:26</td>
+				<td>
+After progress bar is disappred final messge displayed was 'Hello World!' which is the expected message to be displayed.									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 3 - Multiple Windows Demonstration</p> 
+													<p class="duration text-sm">0h:0m:3s+282ms</p> 
+													<span class="datetime">09:52:53 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 3 - Multiple Windows Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:52:53 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:52:56 AM</span>
+															<span class='badge badge-default'>0h:0m:3s+282ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:55</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:56</td>
+				<td>
+Multiple Windows link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:56</td>
+				<td>
+Dynamic Loading link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:56</td>
+				<td>
+Currently opened URL of the web page is 'http://the-internet.herokuapp.com/windows/new'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:56</td>
+				<td>
+Current tab is closed.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:52:56</td>
+				<td>
+Title of the current opened window is 'The Internet'									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 4 - Drag And Drop Demonstration</p> 
+													<p class="duration text-sm">0h:0m:5s+461ms</p> 
+													<span class="datetime">09:53:23 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 4 - Drag And Drop Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:53:23 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:53:29 AM</span>
+															<span class='badge badge-default'>0h:0m:5s+461ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:53:25</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:53:26</td>
+				<td>
+Drag and Drop link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:53:26</td>
+				<td>
+Title of the page is 'Drag and Drop'									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:53:26</td>
+				<td>
+First Box Title is A									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:53:26</td>
+				<td>
+Second Box Title is B									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:53:26</td>
+				<td>
+Before drag and drop, at present First box title is 'A' and Second Box title is 'B'.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:53:26</td>
+				<td>
+Current snapshot of the webdriver is captured.					<img class='r-img' title='' onerror='this.style.display="none"' data-featherlight='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_26.png' src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_26.png' data-src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_26.png'>				</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:53:28</td>
+				<td>
+First box on the page is dragged and dropped on the second box successfully.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:53:28</td>
+				<td>
+After drag and drop, at present First box title is 'B' and Second Box title is 'A'.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:53:29</td>
+				<td>
+Current snapshot of the webdriver is captured.					<img class='r-img' title='' onerror='this.style.display="none"' data-featherlight='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_29.png' src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_29.png' data-src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_53_29.png'>				</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 5 - Frames Demonstration</p> 
+													<p class="duration text-sm">0h:0m:45s+977ms</p> 
+													<span class="datetime">09:53:58 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 5 - Frames Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:53:58 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:54:44 AM</span>
+															<span class='badge badge-default'>0h:0m:45s+977ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:00</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:01</td>
+				<td>
+Frames link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:01</td>
+				<td>
+Frame Link viz., 'iFrame' is present on the screen									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:03</td>
+				<td>
+Clicked on the 'iFrame' link on the Frames page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:03</td>
+				<td>
+The default text present on the text editor is 'Your content goes here.' which is expected.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:03</td>
+				<td>
+Textbox on the text editor is cleared successfully.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:03</td>
+				<td>
+Textbox on the text editor is entered with the input text 'This is an Automated Text written on the iFrame' successfully.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:54:43</td>
+				<td>
+Bold Button is clicked successfully on the text editor.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-info text-info"></i></td>
+				<td>09:54:44</td>
+				<td>
+Current snapshot of the webdriver is captured.					<img class='r-img' title='' onerror='this.style.display="none"' data-featherlight='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_54_43.png' src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_54_43.png' data-src='C:\Log\GitRepo\internetherokuapp\SourceCode\CSharpSolution\Framework\HerokuAppAutomation\UI.Tests\bin\Debug\Reports\2021_10_31_9_51_35\2021_10_31_9_54_43.png'>				</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+										<li class="test-item" status="pass" author="" device="" tag="UI"> 
+											<div class="status-avatar pass-bg">
+												<i class="fa fa-check text-white"></i>
+											</div>
+											<div class="open-test">
+												<div class="test-detail"> 
+													<p class="name">Test Case 6 - JavaScript Alerts Demonstration</p> 
+													<p class="duration text-sm">0h:0m:3s+086ms</p> 
+													<span class="datetime">09:55:12 AM</span>
+												</div>
+											</div>
+											<div class="test-contents d-none">
+												<div class="detail-head">
+													<div class="p-v-10 d-inline-block">	
+														<div class="info">
+															<h5 class="test-status text-pass">Test Case 6 - JavaScript Alerts Demonstration</h5>
+															<span class='badge badge-success'>10/31/2021 9:55:12 AM</span>
+															<span class='badge badge-danger'>10/31/2021 9:55:16 AM</span>
+															<span class='badge badge-default'>0h:0m:3s+086ms</span>
+														</div>
+														<div class="m-t-15">
+		                                        				<div class="attributes">
+						<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> UI</span> 	
+			</div>
+
+														</div>
+																											</div>
+												</div>
+<div class="detail-body mt-4">												
+	
+<table class="table table-sm">
+	<thead><tr>
+		<th class="status-col">Status</th>
+		<th class="timestamp-col">Timestamp</th>
+		<th class="details-col">Details</th>
+	</tr></thead>
+	<tbody>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+Home page navigated.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+JavaScript Alerts link is clicked fromt the main page.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+JavaScript Confirm button is present on the screen after clicking on the JavaScript Alerts link.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+'Click for JS Confirm' button is present on the JavaScript Alerts webpage									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+'Click for JS Confirm' button is clicked on the JavaScript Alerts webpage									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+JavaScript Alert popup is shown.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+Text message displayed on the alert popup is 'I am a JS Confirm'.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:15</td>
+				<td>
+Alert displayed on the web browser is successfully dismissed.									</td>
+			</tr>
+			<tr class="event-row">
+				<td><i class="fa fa-check text-pass"></i></td>
+				<td>09:55:16</td>
+				<td>
+'You clicked: Cancel' message is present on the page which is as expected, after clickiing on Cancel button from the JavaScript Alert									</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>    
+											</div>
+										</li>
+                                </ul>    
+                            </div>
+                        </div>
+                        <div class="test-content scrollable">
+                            <div class="test-content-tools">
+                                <ul>
+                                    <li>
+                                        <a class="back-to-test" href="javascript:void(0)">
+                                            <i class="fa fa-arrow-left"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="test-content-detail">
+                                <div class="detail-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script type='text/javascript'>
+	
+</script>
+<script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/f97b667/spark/js/script.js"></script>
+
+</body>
+
+</html>

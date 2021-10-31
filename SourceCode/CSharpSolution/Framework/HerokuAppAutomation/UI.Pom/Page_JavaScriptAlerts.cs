@@ -49,6 +49,39 @@ namespace UI.Pom
             Assert.IsTrue(actualResultMsg == expectedResultMsg, $"Actual Result message '{actualResultMsg}' and expected result message '{expectedResultMsg}' are not same. Assertion failed.");
             logger.Debug($"Swithced to newly opened tab.");
         }
+
+        public void ValidateWhetherAlertIsShown()
+        {
+            if(isAlertPresent())
+                ExtentReportsHelper.SetStepStatusPass($"JavaScript Alert popup is shown.");
+            else
+                ExtentReportsHelper.SetTestStatusFail($"JavaScript Alert popup is not shown.");
+        }
+
+        public string GetAlertText()
+        {
+            string alertText = GetTextFromAlert();
+            if (alertText != null)
+                logger.Debug($"JavaScript Alert popup is shown with the text message '{alertText}'.");
+            else
+                logger.Debug($"Either Exception occurred or unable to get text from JavaScript Alert popup.");
+            return alertText;
+        }
+
+        public bool DismissAlert()
+        {
+            bool isDismissed = CancelTheAlert();
+            if(isDismissed)
+            {
+                logger.Debug($"Alert displayed on the web browser is successfully dismissed.");
+                return true;
+            }
+            else
+            {
+                logger.Debug($"Unable to dismiss the Alert on the web browser.");
+                return false;
+            }
+        }
         #endregion
 
     }

@@ -10,7 +10,7 @@ Step 4 - Take the screenshot of the same
 Scenario: Test Case 4 - Drag And Drop Demonstration
 	When User launch the website and click on Drag And Drop item
 	Then User should be able to see Box A first followed by Box B
-	And Take screenshot of the boxes
+	And Take screenshot of the current window
 	When User drag Box A and drop inot Box B
 	Then Box B should be present first followed by Box A
 	Then Take screenshot of the current window
