@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using UI.Pom;
 using Utilities;
+using static Utilities.Constants;
 
 namespace TestExecutor
 {
@@ -40,6 +41,7 @@ namespace TestExecutor
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
+            var aa = Environment.StackTrace;
             #region Initializing Logger
             if (logger == null)
             {
@@ -49,13 +51,11 @@ namespace TestExecutor
 
             #endregion
             #region Initializing Extent Report
-            if (currentReportPath == null)
-            {
-                string reportPath = Utilities.Helpers.CreateReportPath();
-                currentReportPath = Path.Combine(reportPath,  Constants.REPORTFILENAME);
-                Utilities.ExtentReportsHelper.InitializeExtentReport(currentReportPath, "Automation Testing Report",
-                    "Regression Testing", "the-internet.herokuapp.com", "QA");
-            }
+            SuiteType suiteType = Environment.StackTrace.Contains(Constants.APITESTS) ? SuiteType.API : SuiteType.UI;
+            string reportPath = Utilities.Helpers.CreateReportPath(suiteType);
+            currentReportPath = Path.Combine(reportPath, suiteType==SuiteType.API ? Constants.APIREPORTFILENAME:Constants.UIREPORTFILENAME);
+            Utilities.ExtentReportsHelper.InitializeExtentReport(currentReportPath, "Automation Testing Report",
+                "Regression Testing", "the-internet.herokuapp.com", "QA");
             #endregion
             KillChromeAndChromeDriverProcesses();
         }
@@ -125,7 +125,7 @@ namespace TestExecutor
             chromeOptions.AddArguments("--disk-cache-size=1");
             chromeOptions.AddArguments("--media-cache-size=1");
             chromeOptions.AddArguments("start-maximized");
-            driver = new ChromeDriver(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.CHROMEDRIVERRELATIVEPATH), chromeOptions);
+            driver = new ChromeDriver(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.GlobalProperties.UI.CHROMEDRIVERRELATIVEPATH), chromeOptions);
         }
 
         private static void KillChromeAndChromeDriverProcesses()

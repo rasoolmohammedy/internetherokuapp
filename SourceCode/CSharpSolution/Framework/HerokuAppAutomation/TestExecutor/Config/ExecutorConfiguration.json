@@ -1,0 +1,25 @@
+{
+    "SMTPDetails": {
+        "smtpServerAddress": "INMAARASOMOHA4P",
+        "smtpServerPortno": 25,
+        "ssl": false,
+        "fromAddr": "rasool.mohammed@xyz.com",
+        "toAddr": "rasool.mohammed@xyz.com",
+        "ccAddr": "rasool.mohammed@xyz.com",
+        "smtpServerUsername": "rasool.mohammed@xyz.com",
+        "smtpServerPassword": "Test@123"
+    },
+    "ResultsConfiguration": {
+        "sendResultsEmail": true,
+        "launchResultsAfterExecution": true
+    },
+    "ExecutorSettings": {
+        "AllBinariesBaseDir": ".",
+        "NUnitConsoleRunnerExePath": "C:\\Program Files (x86)\\NUnit.org\\nunit-console\\nunit3-console.exe",
+        "TestCasesOrderConfigFilePath": "Config\\TestCasesOrder.config",
+        "APISuiteDLLPath": "API.Tests.dll",
+        "UISuiteDLLPath": "UI.Tests.dll",
+        "NUnitResultsXMLPath": "NUnitTestResults.xml",
+        "NUnitOutputPath": "NUnitOutput.txt"
+    }
+}

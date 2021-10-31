@@ -13,11 +13,14 @@ namespace Utilities
 {
      public static class Constants
     {
-        public const string CHROMEDRIVERRELATIVEPATH = @"Resources";
         public const string TESTDATAFILEPATH = @"Data\TestData.xlsx";
-        public const string REPORTFILENAME = "ExtentReport.html";
+        public const string APITESTS = "API_Tests";
+        public const string APIREPORTFILENAME = "API_ExtentReport.html";
+        public const string UIREPORTFILENAME = "UI_ExtentReport.html";
         public const string CURRENTDATETIMEFORMAT = "yyyy_MM_dd_H_mm_ss";
         public const string REPLACER = "@@@";
+        public const string INDEXFILENAME = "index.html";
+        public const string DASHBOARDFILENAME = "dashboard.html";
 
         public enum BrowserTypes
         {
@@ -44,6 +47,8 @@ namespace Utilities
             TOKEN
         }
 
+
+
         public static class TestDataConsts
         {
             public const string HEADER_TESTCASENAME = "Test Case Name";
@@ -68,6 +73,7 @@ namespace Utilities
             public const string USERNAME = "username";
             public const string PASSWORD = "password";
             public const string BROSWERTYPE= "browsertype";
+            public const string CHROMEDRIVERRELATIVEPATH = "chromeDriverRelativePath";
         }
 
         public static class API
@@ -88,6 +94,7 @@ namespace Utilities
                 public static readonly string BASEPATH = null;
                 public static readonly string BROSWERTYPE = null;
                 public static readonly ILog logger = LogManager.GetLogger(typeof(UI));
+                public static readonly string CHROMEDRIVERRELATIVEPATH = null;
 
                 static UI()
                 {
@@ -133,6 +140,7 @@ namespace Utilities
                         try
                         {
                             BROSWERTYPE = inidata.Sections.GetSectionData(PropFileConsts.ENVIRONMENTSETTINGS).Keys.GetKeyData(PropFileConsts.BROSWERTYPE).Value;
+                            CHROMEDRIVERRELATIVEPATH = inidata.Sections.GetSectionData(PropFileConsts.ENVIRONMENTSETTINGS).Keys.GetKeyData(PropFileConsts.CHROMEDRIVERRELATIVEPATH).Value;
                         }
                         catch (Exception ex)
                         {

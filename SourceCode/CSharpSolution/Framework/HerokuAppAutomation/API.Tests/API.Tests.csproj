@@ -107,6 +107,7 @@
     <Compile Include="Features\F1_CreateBooking.feature.cs" />
     <Compile Include="Features\F2_Getooking.feature.cs" />
     <Compile Include="Features\F3_UpdateBooking.feature.cs" />
+    <Compile Include="Features\F4_DeleteBooking.feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\F1_CreateBookingSteps.cs" />
     <Compile Include="StepDefinitions\F2_GetookingSteps.cs" />

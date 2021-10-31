@@ -84,6 +84,8 @@
     <Compile Include="Features\TC2_DynamicLoading.feature.cs" />
     <Compile Include="Features\TC3_MultipleWindows.feature.cs" />
     <Compile Include="Features\TC4_DragAndDrop.feature.cs" />
+    <Compile Include="Features\TC5_Frames.feature.cs" />
+    <Compile Include="Features\TC6_JavaScriptAlerts.feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\TC1_FormAuthenticationSteps.cs" />
     <Compile Include="StepDefinitions\TC2_DynamicLoadingSteps.cs" />

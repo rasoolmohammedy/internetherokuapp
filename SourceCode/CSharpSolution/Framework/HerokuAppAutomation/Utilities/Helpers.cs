@@ -17,12 +17,12 @@ namespace Utilities
     {
         public static readonly ILog logger = LogManager.GetLogger(typeof(Helpers));
 
-        public static string CreateReportPath()
+        public static string CreateReportPath(SuiteType suiteType)
         {
             var reportBasePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.GlobalProperties.UI.BASEPATH);
             if (!Directory.Exists(reportBasePath))
                 Directory.CreateDirectory(reportBasePath);
-            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString(Constants.CURRENTDATETIMEFORMAT));
+            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString(Constants.CURRENTDATETIMEFORMAT)+"_"+suiteType.ToString());
             Directory.CreateDirectory(reportPath);
             return reportPath;
         }
