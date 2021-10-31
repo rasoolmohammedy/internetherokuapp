@@ -73,7 +73,7 @@ namespace Utilities
             }
             test.Fail(printMessage);
         }
-        public static void AddTestFailureScreenshot(string base64ScreenCapture)
+        public static void AddScreenshot(string base64ScreenCapture)
         {
             test.AddScreenCaptureFromPath(base64ScreenCapture, "Screenshot on Error:");  
         }

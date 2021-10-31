@@ -57,6 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Page_DragAndDrag.cs" />
+    <Compile Include="Page_Frames.cs" />
+    <Compile Include="Page_JavaScriptAlerts.cs" />
     <Compile Include="Page_MultipleWindows.cs" />
     <Compile Include="Page_DynamicLoading.cs" />
     <Compile Include="Page_FormAuthentication.cs" />
