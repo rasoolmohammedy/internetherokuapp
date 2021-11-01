@@ -7,7 +7,7 @@
         "toAddr": "rasoolmailsend@gmail.com",
         "ccAddr": "rasoolmailsend@gmail.com",
         "smtpServerUsername": "rasoolmailsend@gmail.com",
-        "smtpServerPassword": "Automation@123@123"
+        "smtpServerPassword": "Automation@123"
     },
     "ResultsConfiguration": {
         "sendResultsEmail": true,
