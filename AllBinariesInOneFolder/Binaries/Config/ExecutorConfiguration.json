@@ -1,13 +1,13 @@
 {
     "SMTPDetails": {
-        "smtpServerAddress": "INMAARASOMOHA4P",
-        "smtpServerPortno": 25,
-        "ssl": false,
-        "fromAddr": "rasool.mohammed@xyz.com",
-        "toAddr": "rasool.mohammed@xyz.com",
-        "ccAddr": "rasool.mohammed@xyz.com",
-        "smtpServerUsername": "rasool.mohammed@xyz.com",
-        "smtpServerPassword": "Test@123"
+        "smtpServerAddress": "smtp.gmail.com",
+        "smtpServerPortno": 587,
+        "ssl": true,
+        "fromAddr": "rasoolmailsend@gmail.com",
+        "toAddr": "rasoolmailsend@gmail.com",
+        "ccAddr": "rasoolmailsend@gmail.com",
+        "smtpServerUsername": "rasoolmailsend@gmail.com",
+        "smtpServerPassword": "Automation@123@123"
     },
     "ResultsConfiguration": {
         "sendResultsEmail": true,
@@ -15,7 +15,7 @@
     },
     "ExecutorSettings": {
         "AllBinariesBaseDir": ".",
-        "NUnitConsoleRunnerExePath": "..\\NUnit.org\\nunit-console\\nunit3-console.exe",
+        "NUnitConsoleRunnerExePath": "..\\nunit-console\\nunit3-console.exe",
         "TestCasesOrderConfigFilePath": "Config\\TestCasesOrder.config",
         "APISuiteDLLPath": "API.Tests.dll",
         "UISuiteDLLPath": "UI.Tests.dll",
