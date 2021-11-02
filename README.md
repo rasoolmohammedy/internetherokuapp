@@ -26,3 +26,19 @@ TC 3	Multiple Windows,
 TC 4	Drag n Drop,
 TC 5 	Frames,
 TC 6	Javascript Alerts,
+
+Technology Stack
+______________________________________________
+1. .NET Framework 4.6.1
+2. C# v 6.0
+3. NUnit Console Runner v 3.0
+4. Selenium
+5. Extent Report
+6. log4net
+7. SpecFlow
+8. Excel for Test Data handling
+9. Rest Sharp for API Automation
+
+Test Suite Execution Demonstration Video
+______________________________________________
+Youtube Link : https://youtu.be/PPhemafx0kg
