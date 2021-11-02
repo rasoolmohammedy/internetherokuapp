@@ -22,6 +22,7 @@ namespace TestExecutor
         static void Main(string[] args)
         {
             #region Handle Parameters
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Number of supplied arguments is {args.Length}");
             Console.WriteLine($"Arguments details as follows:");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -85,7 +86,10 @@ namespace TestExecutor
                 }
             }
             #endregion
-            Console.WriteLine("Execution completed. Press any key to exit...");
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\nExecution completed. Press any key to exit...");
+            Console.ResetColor();
             Console.ReadKey();
         }
 
@@ -195,6 +199,7 @@ namespace TestExecutor
             Process p = new Process();
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = false;
+            p.StartInfo.RedirectStandardError = false;
             p.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, config.ExecutorSettings.NUnitConsoleRunnerExePath);
             p.StartInfo.Arguments = $@"--testlist={config.ExecutorSettings.TestCasesOrderConfigFilePath} --result={artifactroryRelativePath}\{config.ExecutorSettings.NUnitResultsXMLPath} --output={artifactroryRelativePath}\{config.ExecutorSettings.NUnitOutputPath} {config.ExecutorSettings.APISuiteDLLPath} {config.ExecutorSettings.UISuiteDLLPath}";
             p.Start();

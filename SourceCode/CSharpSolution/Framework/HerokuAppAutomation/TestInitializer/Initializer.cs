@@ -103,6 +103,11 @@ namespace TestExecutor
         [AfterScenario(Order = 1000)]
         public void AfterScenario()
         {
+            Exception lastError = scenarioContext.TestError;
+            if (lastError != null)
+            {
+                ExtentReportsHelper.SetTestStatusFail(lastError);
+            }
             Utilities.ExtentReportsHelper.Close();
             if (scenarioContext.ScenarioInfo.Tags.Contains(Constants.SuiteType.UI.ToString()))
             {
