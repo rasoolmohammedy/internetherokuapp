@@ -6,26 +6,26 @@ API Automation Base URL - https://restful-booker.herokuapp.com/booking
 
 API Automation Test Scenarios
 _____________________________________________	
-TC 1	CreateBooking Positive Scenario,
-TC 2	Create Booking Negative Null Check,
-TC 3	Create Booking Negative Invalid Date,
-TC 4	Get Booking Positive Scenario,
-TC 5 	Get Booking Negative Invalid Date,
-TC 6	Update Booking Positive Scenario,
-TC 7	Update Booking Negative Invalid Date,
-TC 8	Delete Booking Positive Scenario,
-TC 9	Delete Booking Negative InvalidID,
-TC 10	Delete Booking Negative Invalid Token,
+1. TC 1	CreateBooking Positive Scenario,
+2. TC 2	Create Booking Negative Null Check,
+3. TC 3	Create Booking Negative Invalid Date,
+4. TC 4	Get Booking Positive Scenario,
+5. TC 5 	Get Booking Negative Invalid Date,
+6. TC 6	Update Booking Positive Scenario,
+7. TC 7	Update Booking Negative Invalid Date,
+8. TC 8	Delete Booking Positive Scenario,
+9. TC 9	Delete Booking Negative InvalidID,
+10. TC 10	Delete Booking Negative Invalid Token,
 
 
 UI Automation Testcases	
 _____________________________________________	
-TC 1	Form Authentication,
-TC 2	Dynamic Loading,
-TC 3	Multiple Windows,
-TC 4	Drag n Drop,
-TC 5 	Frames,
-TC 6	Javascript Alerts,
+1. TC 1	Form Authentication,
+2. TC 2	Dynamic Loading,
+3. TC 3	Multiple Windows,
+4. TC 4	Drag n Drop,
+5. TC 5 	Frames,
+6. TC 6	Javascript Alerts,
 
 Technology Stack
 ______________________________________________
