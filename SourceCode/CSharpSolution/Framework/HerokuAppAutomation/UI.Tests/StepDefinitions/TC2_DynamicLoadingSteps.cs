@@ -28,12 +28,17 @@ namespace UI.Tests.StepDefinitions
             this.driver = driver;
         }
 
-        [BeforeScenario]
+        [BeforeScenario(new string[] { "DynamicLoading", "MultipleWindows"})]
         public void Initialize()
         {
             p_dynamicLoading = new Page_DynamicLoading(driver);
             p_home = new Page_Home(driver);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.UI, scenarioContext.ScenarioInfo.Title);
+            if (Array.Exists(scenarioContext.ScenarioInfo.Tags, tag => tag == "DynamicLoading"))
+            {
+                ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+                ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
+            }
         }
 
         [AfterScenario]

@@ -7,7 +7,7 @@ Step 3 - Read that username and password from the external file and log in with 
 Step 4 - Validate the login success.
 Step 5 - Enter any invalid credentials and validate the failure scenario as well.
 
-@UI
+@UI @FormAuthentication
 Scenario: Test Case 1 - Form Authentication Demonstration
 	When I launch the website and click on Form Authentication
 	Then Get the username and password displayed on screen and store them in test data file

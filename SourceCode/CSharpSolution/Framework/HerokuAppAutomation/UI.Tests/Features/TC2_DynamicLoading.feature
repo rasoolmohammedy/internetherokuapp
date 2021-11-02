@@ -6,7 +6,7 @@ Step 2 - Click Start
 Step 3 - Validate the progress bar
 Step 4 - Validate the final message once the progress gets complete. (Note: Avoid hard-coded wait)
 
-@UI
+@UI @DynamicLoading
 Scenario: Test Case 2 - Dynamic Loading Demonstration
 	Given the user landed into Homepage
 	When the user clicks on Dynamic Loading Iteam

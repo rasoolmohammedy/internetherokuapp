@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using static Utilities.Constants;
 using System.Collections;
 using static Utilities.ExcelDataManager;
+using AventStack.ExtentReports.MarkupUtils;
 
 namespace API.Tests.StepDefinitions
 {
@@ -37,6 +38,8 @@ namespace API.Tests.StepDefinitions
         public void Initialize()
         {
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
+            ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+            ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
         }
 
         [AfterScenario]
@@ -54,7 +57,6 @@ namespace API.Tests.StepDefinitions
             try
             {
                 response = base.PostCall(uri, requestBody, requestHeaders);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
             }
             catch (Exception ex)
             {
@@ -73,7 +75,6 @@ namespace API.Tests.StepDefinitions
                 if (response.StatusCode == expectedHttpResponse)
                 {
                     Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking created successfully.");
-                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Response Body={Environment.NewLine + response.Content}");
                 }
                 else
                 {
@@ -98,7 +99,8 @@ namespace API.Tests.StepDefinitions
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 31, 4, bookingId.ToString());
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 37, 4, bookingId.ToString());
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 47, 4, bookingId.ToString());
-                Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
+                Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieved from API response is {bookingId.ToString()} and it is stored back to test data file.");
+                ExtentReportsHelper.SetStepStatusInfoLabelMarkup($"Booking ID={bookingId}",ExtentColor.Green,ExtentColor.White);
             }
             catch (Exception e)
             {

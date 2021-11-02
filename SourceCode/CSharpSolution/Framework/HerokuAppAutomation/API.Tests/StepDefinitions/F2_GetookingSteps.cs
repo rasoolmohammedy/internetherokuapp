@@ -35,6 +35,8 @@ namespace API.Tests.StepDefinitions
         public void Initialize()
         {
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
+            ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+            ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
         }
 
         [AfterScenario]
@@ -135,7 +137,7 @@ namespace API.Tests.StepDefinitions
             var requestHeaders = Utilities.Helpers.GetRequestHeaders(new RequestHeaders[] { RequestHeaders.ACCEPT, RequestHeaders.CONTENT_TYPE });
             try
             {
-                response = base.PostCall(uri, requestBody, requestHeaders);
+                response = base.PostCall(uri, requestBody, requestHeaders,false);
             }
             catch (Exception ex)
             {
@@ -147,7 +149,7 @@ namespace API.Tests.StepDefinitions
             {
                 if (response.StatusCode == expectedHttpResponse)
                 {
-                    Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking created successfully.");
+                    Utilities.ExtentReportsHelper.SetStepStatusInfo($"Booking created successfully.");
                 }
                 else
                 {
@@ -166,7 +168,7 @@ namespace API.Tests.StepDefinitions
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 31, 4, bookingId.ToString());
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 37, 4, bookingId.ToString());
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, 47, 4, bookingId.ToString());
-                Utilities.ExtentReportsHelper.SetStepStatusPass($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
+                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Booking ID retrieve from API response is {bookingId.ToString()} and it is stored back to test data file.");
             }
             catch (Exception e)
             {

@@ -77,10 +77,12 @@ namespace UI.Tests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Test Case 6 - JavaScript Alerts Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
+        [NUnit.Framework.CategoryAttribute("jsAlerts")]
         public virtual void TestCase6_JavaScriptAlertsDemonstration()
         {
             string[] tagsOfScenario = new string[] {
-                    "UI"};
+                    "UI",
+                    "jsAlerts"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 6 - JavaScript Alerts Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9

@@ -78,10 +78,12 @@ namespace UI.Tests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Test Case 3 - Multiple Windows Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
+        [NUnit.Framework.CategoryAttribute("MultipleWindows")]
         public virtual void TestCase3_MultipleWindowsDemonstration()
         {
             string[] tagsOfScenario = new string[] {
-                    "UI"};
+                    "UI",
+                    "MultipleWindows"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 3 - Multiple Windows Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10

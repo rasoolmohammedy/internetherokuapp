@@ -6,7 +6,7 @@ Step 2 - Drag box A and drop it into B
 Step 3 - Validate the drop success
 Step 4 - Take the screenshot of the same
 
-@UI
+@UI @DragNDrop
 Scenario: Test Case 4 - Drag And Drop Demonstration
 	When User launch the website and click on Drag And Drop item
 	Then User should be able to see Box A first followed by Box B

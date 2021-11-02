@@ -78,10 +78,12 @@ namespace UI.Tests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Test Case 5 - Frames Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
+        [NUnit.Framework.CategoryAttribute("Frames")]
         public virtual void TestCase5_FramesDemonstration()
         {
             string[] tagsOfScenario = new string[] {
-                    "UI"};
+                    "UI",
+                    "Frames"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 5 - Frames Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10

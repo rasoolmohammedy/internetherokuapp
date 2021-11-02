@@ -1,4 +1,5 @@
 ﻿using API.Base;
+using AventStack.ExtentReports.MarkupUtils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
@@ -37,6 +38,8 @@ namespace API.Tests.StepDefinitions
         public void Initialize()
         {
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
+            ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+            ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
         }
 
         [AfterScenario]
@@ -57,8 +60,7 @@ namespace API.Tests.StepDefinitions
             var requestHeaders = Helpers.GetRequestHeaders(new RequestHeaders[] {RequestHeaders.CONTENT_TYPE });
             try
             {
-                response = base.PostCall(uri, requestBody, requestHeaders);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
+                response = base.PostCall(uri, requestBody, requestHeaders,false);
             }
             catch (Exception ex)
             {
@@ -79,7 +81,6 @@ namespace API.Tests.StepDefinitions
             try
             {
                 response = base.PutCall(uri,requestHeaders, requestBody,cookies);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
             }
             catch (Exception ex)
             {
@@ -100,7 +101,6 @@ namespace API.Tests.StepDefinitions
             try
             {
                 response = base.PutCall(uri, requestHeaders, requestBody, cookies);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri + Environment.NewLine}ReqestBody= {requestBody}");
             }
             catch (Exception ex)
             {
@@ -117,7 +117,8 @@ namespace API.Tests.StepDefinitions
                 string authToken = api.token;
                 Utilities.ExcelDataManager.UpdatePropertyValueToTestData(Constants.SuiteType.API, rowNumber, 4, authToken);
                 Initialize();
-                Utilities.ExtentReportsHelper.SetStepStatusPass($"Auth Token generated successfully. Generated Auth token is '{authToken}' and it is stored back to test data file.");
+                Utilities.ExtentReportsHelper.SetStepStatusPass($"Auth Token generated successfully and it is stored back to test data file.");
+                ExtentReportsHelper.SetStepStatusInfoLabelMarkup($"Auth Token: {authToken}",ExtentColor.Indigo,ExtentColor.White);
             }
             catch (Exception e)
             {

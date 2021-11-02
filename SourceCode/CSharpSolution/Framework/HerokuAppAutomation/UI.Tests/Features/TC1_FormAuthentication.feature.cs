@@ -81,10 +81,12 @@ Step 5 - Enter any invalid credentials and validate the failure scenario as well
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Test Case 1 - Form Authentication Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
+        [NUnit.Framework.CategoryAttribute("FormAuthentication")]
         public virtual void TestCase1_FormAuthenticationDemonstration()
         {
             string[] tagsOfScenario = new string[] {
-                    "UI"};
+                    "UI",
+                    "FormAuthentication"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 1 - Form Authentication Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 11

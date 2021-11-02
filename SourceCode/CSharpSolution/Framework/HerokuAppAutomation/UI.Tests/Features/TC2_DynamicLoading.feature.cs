@@ -80,10 +80,12 @@ Step 4 - Validate the final message once the progress gets complete. (Note: Avoi
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Test Case 2 - Dynamic Loading Demonstration")]
         [NUnit.Framework.CategoryAttribute("UI")]
+        [NUnit.Framework.CategoryAttribute("DynamicLoading")]
         public virtual void TestCase2_DynamicLoadingDemonstration()
         {
             string[] tagsOfScenario = new string[] {
-                    "UI"};
+                    "UI",
+                    "DynamicLoading"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Case 2 - Dynamic Loading Demonstration", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10

@@ -31,12 +31,14 @@ namespace UI.Tests.StepDefinitions
             this.driver = driver;
         }
 
-        [BeforeScenario]
+        [BeforeScenario("Frames")]
         public void Initialize()
         {
             p_frames = new Page_Frames(driver);
             p_home = new Page_Home(driver);
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.UI, scenarioContext.ScenarioInfo.Title);
+            ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+            ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
         }
 
         [AfterScenario]

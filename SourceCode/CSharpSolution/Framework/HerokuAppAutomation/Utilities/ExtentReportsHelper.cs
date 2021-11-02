@@ -60,6 +60,16 @@ namespace Utilities
             test.Info(MarkupHelper.CreateCodeBlock(jsonString, CodeLanguage.Json));
         }
 
+        public static void SetStepStatusInfoLabelMarkup(string labelText, ExtentColor labelColor, ExtentColor textColor)
+        {
+            test.Info(MarkupHelper.CreateLabel(labelText, labelColor, textColor));
+        }
+
+        public static void SetStepStatusInfoTableMarkup(string[,] twoDimentionTable)
+        {
+            test.Info(MarkupHelper.CreateTable(twoDimentionTable));
+        }
+
         public static void SetTestStatusPass()
         {
             test.Pass("Test Executed Sucessfully!");
@@ -73,6 +83,18 @@ namespace Utilities
             }
             test.Fail(printMessage);
         }
+
+        public static void SetTestStatusFail(Exception ex)
+        {
+            var printMessage = "<p><b>Test FAILED!</b></p>";
+            if (!string.IsNullOrEmpty(ex.Message))
+            {
+                printMessage += $"Message: <br>{ex.Message}<br>";
+            }
+            test.Fail(printMessage);
+            test.Fail(ex);
+        }
+
         public static void AddScreenshot(string base64ScreenCapture)
         {
             test.AddScreenCaptureFromPath(base64ScreenCapture, "Screenshot on Error:");  

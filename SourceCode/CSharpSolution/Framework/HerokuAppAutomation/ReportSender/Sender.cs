@@ -106,7 +106,7 @@ namespace ReportSender
                 }
             }
             rpTemplate.tcFields = listTcFields;
-            rpTemplate.totalPassedTCs = rpTemplate.tcFields.Select(x => x.testCaseStatus == TCStatus.Pass).Count();
+            rpTemplate.totalPassedTCs = rpTemplate.tcFields.Where(x => x.testCaseStatus == TCStatus.Pass).Count();
             rpTemplate.totalFailedTCs = rpTemplate.tcFields.Count()- rpTemplate.totalPassedTCs; 
             return rpTemplate;
         }

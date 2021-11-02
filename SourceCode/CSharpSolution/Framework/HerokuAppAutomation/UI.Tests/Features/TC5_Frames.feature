@@ -6,7 +6,7 @@ Step 2 - Clear the predefined text and Enter some text
 Step 3 - Apply Bold style for the newly entered text
 Step 4 - Take the screenshot of the same
 
-@UI
+@UI @Frames
 Scenario: Test Case 5 - Frames Demonstration
 	When User launch the website and click on Frames item
 	Then User should be able to see iFrame link

@@ -47,8 +47,6 @@ namespace Utilities
             TOKEN
         }
 
-
-
         public static class TestDataConsts
         {
             public const string HEADER_TESTCASENAME = "Test Case Name";

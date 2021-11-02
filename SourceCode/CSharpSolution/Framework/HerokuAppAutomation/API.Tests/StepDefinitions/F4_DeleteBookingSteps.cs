@@ -35,6 +35,8 @@ namespace API.Tests.StepDefinitions
         public void Initialize()
         {
             testData = Utilities.ExcelDataManager.GetTestData(Constants.SuiteType.API, scenarioContext.ScenarioInfo.Title);
+            ExtentReportsHelper.SetStepStatusInfo($"Test Data collection obtained for the test case {scenarioContext.ScenarioInfo.Title} is printed below:");
+            ExtentReportsHelper.SetStepStatusInfoTableMarkup(Helpers.Get2DArrayFromCollection(testData));
         }
 
         [AfterScenario]
@@ -76,7 +78,6 @@ namespace API.Tests.StepDefinitions
             try
             {
                 response = base.DeleteCall(uri, requestHeaders, cookies);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri}");
             }
             catch (Exception ex)
             {
@@ -96,7 +97,6 @@ namespace API.Tests.StepDefinitions
             try
             {
                 response = base.DeleteCall(uri, requestHeaders, cookies);
-                Utilities.ExtentReportsHelper.SetStepStatusInfo($"Endpoint URL={new Uri(restClient.BaseUrl, uri).AbsoluteUri}");
             }
             catch (Exception ex)
             {

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static Utilities.Constants;
+using RestSharp;
 
 namespace Utilities
 {
@@ -22,7 +23,7 @@ namespace Utilities
             var reportBasePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, Constants.GlobalProperties.UI.BASEPATH);
             if (!Directory.Exists(reportBasePath))
                 Directory.CreateDirectory(reportBasePath);
-            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString(Constants.CURRENTDATETIMEFORMAT)+"_"+suiteType.ToString());
+            var reportPath = Path.Combine(reportBasePath, DateTime.Now.ToString(Constants.CURRENTDATETIMEFORMAT) + "_" + suiteType.ToString());
             Directory.CreateDirectory(reportPath);
             return reportPath;
         }
@@ -74,9 +75,70 @@ namespace Utilities
             Dictionary<RequestHeaders, string> requestHeaders = new Dictionary<RequestHeaders, string>();
             foreach (var key in headerKey)
             {
-                    requestHeaders.Add(key, Constants.API.HeaderConstants.APPLICATION_JSON);
+                requestHeaders.Add(key, Constants.API.HeaderConstants.APPLICATION_JSON);
             }
             return requestHeaders;
+        }
+
+        public static string[,] Get2DArrayFromCollection(Dictionary<RequestHeaders, string> collection)
+        {
+            string[,] output = new string[collection.Count + 1,2];
+            int i = 1;
+            output[0, 0] = "Header Name";
+            output[0, 1] = "Header Value";
+            foreach (KeyValuePair<RequestHeaders, string> item in collection)
+            {
+                output[i, 0] = item.Key.ToDescriptionString();
+                output[i, 1] = item.Value;
+                i++;
+            }
+            return output;
+        }
+        public static string[,] Get2DArrayFromCollection(Dictionary<Cookies, string> collection)
+        {
+            string[,] output = new string[collection.Count + 1, 2];
+            int i = 1;
+            output[0, 0] = "Cookie Name";
+            output[0, 1] = "Cookie Value";
+            foreach (KeyValuePair<Cookies, string> item in collection)
+            {
+                output[i, 0] = item.Key.ToDescriptionString();
+                output[i, 1] = item.Value;
+                i++;
+            }
+            return output;
+        }
+
+        public static string[,] Get2DArrayFromCollection(Dictionary<string, string> collection)
+        {
+            string[,] output = new string[collection.Count + 1, 2];
+            int i = 1;
+            output[0, 0] = "Parameter Name";
+            output[0, 1] = "Parameter Value";
+            foreach (KeyValuePair<string, string> item in collection)
+            {
+                output[i, 0] = item.Key;
+                output[i, 1] = item.Value;
+                i++;
+            }
+            return output;
+        }
+
+        public static string[,] Get2DArrayFromCollection(IList<Parameter> collection)
+        {
+            if (collection == null || collection.Count == 0)
+                return null;
+            string[,] output = new string[collection.Count+1,2];
+            int i = 1;
+            output[0, 0] = "Header Name";
+            output[0, 1] = "Header Value";
+            foreach (var item in collection)
+            {
+                output[i, 0] = item.Name;
+                output[i, 1] = item.Value.ToString();
+                i++;
+            }
+            return output;
         }
     }
 }

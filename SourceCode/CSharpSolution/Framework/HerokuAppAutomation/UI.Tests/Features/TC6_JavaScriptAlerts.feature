@@ -5,7 +5,7 @@ Step 2 - Click on "Click for JS confirm"
 Step 3 - Cancel the alert
 Step 4 - Validate the alert canceled message
 
-@UI
+@UI @jsAlerts
 Scenario: Test Case 6 - JavaScript Alerts Demonstration
 	When User launch the website and click on JavaScript link
 	Then User should be able to see Click for JS Confirm button
