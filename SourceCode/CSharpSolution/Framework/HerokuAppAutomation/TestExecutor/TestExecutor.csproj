@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="SolutionClassDiagram.cd" />
     <None Include="Config\ExecutorConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

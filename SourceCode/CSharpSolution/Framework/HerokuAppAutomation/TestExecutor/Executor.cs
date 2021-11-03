@@ -90,7 +90,7 @@ namespace TestExecutor
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\nExecution completed. Press any key to exit...");
             Console.ResetColor();
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         static ConfigLoader LoadConfiguration(string filePath)

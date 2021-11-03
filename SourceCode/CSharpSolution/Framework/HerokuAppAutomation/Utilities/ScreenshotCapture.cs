@@ -32,7 +32,7 @@ namespace Utilities
             catch (Exception ex)
             {
                 var errMsg = $"Unexpected exception occurred while trying to capture the screenshot of the current browser window.";
-                ExtentReportsHelper.SetTestStatusFail(msg);
+                ExtentReportsHelper.SetTestStatusFail(errMsg);
                 ExtentReportsHelper.SetTestStatusFail(ex);
                 logger.Error(errMsg,ex);
                 return null;

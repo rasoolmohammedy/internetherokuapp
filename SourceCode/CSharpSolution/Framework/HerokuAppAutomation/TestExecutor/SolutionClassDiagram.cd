@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestExecutor.Executor" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAACAAAAAAAAQBAAAAAAEAAAAABAAEABAEAAAE=</HashCode>
+      <FileName>Executor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API.Tests.StepDefinitions.F1_CreateBookingSteps" Collapsed="true">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TestExecutor.Initializer" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.StepDefinitions.F2_GetookingSteps" Collapsed="true">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.StepDefinitions.F3_UpdateBookingSteps" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.StepDefinitions.F4_DeleteBookingSteps" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.Features.F1_CreateBookingFeature" Collapsed="true">
+    <Position X="10.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.Features.F2_GetookingFeature" Collapsed="true">
+    <Position X="10.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.Features.F3_UpdateBookingFeature" Collapsed="true">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Tests.Features.F4_DeleteBookingFeature" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC1_FormAuthenticationSteps" Collapsed="true">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC2_DynamicLoadingSteps" Collapsed="true">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC3_MultipleWindowsSteps" Collapsed="true">
+    <Position X="9" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC4_DragAndDropSteps" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC5_FramesSteps" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.StepDefinitions.TC6_JavaScriptAlertsSteps" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC1_FormAuthenticationFeature" Collapsed="true">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC2_DynamicLoadingFeature" Collapsed="true">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC3_MultipleWindowsFeature" Collapsed="true">
+    <Position X="7" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC4_DragAndDropFeature" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC5_FramesFeature" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Tests.Features.TC6_JavaScriptAlertsFeature" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="API.Base.BaseClass" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Base.BaseClass" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_DragAndDrag" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_DynamicLoading" Collapsed="true">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_FormAuthentication" Collapsed="true">
+    <Position X="13" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_Frames" Collapsed="true">
+    <Position X="13.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_Home" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_JavaScriptAlerts" Collapsed="true">
+    <Position X="13.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UI.Pom.Page_MultipleWindows" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.ExcelDataManager" Collapsed="true">
+    <Position X="1.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.ExtensionMethods" Collapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.ExtentReportsHelper" Collapsed="true">
+    <Position X="2" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.Helpers" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.PropertiesReader" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.ScreenshotCapture" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utilities.Constants" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Utilities.Constants.BrowserTypes" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Utilities.Constants.SuiteType" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Utilities.Constants.RequestHeaders" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Utilities.Constants.Cookies" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Class Name="Utilities.Constants.TestDataConsts" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Utilities.Constants.PropFileConsts" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Utilities.Constants.API" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Utilities.Constants.GlobalProperties" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ReportSender.Sender" Collapsed="true">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ReportSender.ConfigLoader" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ReportSender.SMTPDetails" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ReportSender.ResultsConfiguration" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ReportSender.ExecutorSettings" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
