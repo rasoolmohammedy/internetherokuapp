@@ -91,6 +91,7 @@
     <Compile Include="Features\TC5_Frames.feature.cs" />
     <Compile Include="Features\TC6_JavaScriptAlerts.feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StepDefinitions\DataDrivenExampleSteps.cs" />
     <Compile Include="StepDefinitions\TC1_FormAuthenticationSteps.cs" />
     <Compile Include="StepDefinitions\TC2_DynamicLoadingSteps.cs" />
     <Compile Include="StepDefinitions\TC3_MultipleWindowsSteps.cs" />
@@ -104,6 +105,7 @@
     <None Include="Data\TestData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Features\DataDrivenExample.feature" />
     <None Include="Features\TC2_DynamicLoading.feature" />
     <None Include="Features\TC3_MultipleWindows.feature" />
     <None Include="Features\TC4_DragAndDrop.feature" />
