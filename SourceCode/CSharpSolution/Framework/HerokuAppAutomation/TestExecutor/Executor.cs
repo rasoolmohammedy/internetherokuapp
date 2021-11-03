@@ -212,7 +212,7 @@ namespace TestExecutor
             string[] files = Directory.GetFiles(currentArtifactDirectory, Constants.INDEXFILENAME,SearchOption.AllDirectories);
             foreach (var file in files)
             {
-                if (file.Contains(SuiteType.API.ToString()))
+                if (Path.GetFileName(Path.GetDirectoryName(file)).Contains(SuiteType.API.ToString()))
                     output.Add(SuiteType.API, Path.GetDirectoryName(file));
                 else
                     output.Add(SuiteType.UI, Path.GetDirectoryName(file));
